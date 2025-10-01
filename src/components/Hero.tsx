@@ -9,18 +9,17 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-8 flex justify-center animate-float">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
             <img 
               src={logo} 
               alt="iHelp Logo" 
-              className="w-32 h-32 md:w-40 md:h-40"
+              className="w-24 h-24 md:w-32 md:h-32 animate-float"
             />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground">
+              Master Your Oral Exams with
+              <span className="block text-accent mt-2">AI-Powered Practice</span>
+            </h1>
           </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6">
-            Master Your Oral Exams with
-            <span className="block text-accent mt-2">AI-Powered Practice</span>
-          </h1>
           
           <p className="text-lg md:text-xl text-primary-foreground/90 mb-10 max-w-3xl mx-auto leading-relaxed">
             iHelp is your intelligent exam preparation platform. Practice COBE and Hebrew oral exams 
@@ -38,18 +37,18 @@ const Hero = () => {
             </Button>
           </div>
           
-          <div className="mt-16 flex flex-wrap justify-center gap-8 text-primary-foreground/80">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-accent"></div>
-              <span className="text-sm">AI-Powered Feedback</span>
+          <div className="mt-16 flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 transition-all hover:bg-primary-foreground/15 hover:scale-105">
+              <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></div>
+              <span className="text-sm font-medium text-primary-foreground">AI-Powered Feedback</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-accent"></div>
-              <span className="text-sm">Real-time Analytics</span>
+            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 transition-all hover:bg-primary-foreground/15 hover:scale-105">
+              <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></div>
+              <span className="text-sm font-medium text-primary-foreground">Real-time Analytics</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-accent"></div>
-              <span className="text-sm">Multi-language Support</span>
+            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 transition-all hover:bg-primary-foreground/15 hover:scale-105">
+              <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></div>
+              <span className="text-sm font-medium text-primary-foreground">Multi-language Support</span>
             </div>
           </div>
         </div>
