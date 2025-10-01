@@ -7,6 +7,8 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+	// {{ <CTA /> }} 
+ 
   return (
     <main className="min-h-screen">
       <Hero />
@@ -14,7 +16,6 @@ const Index = () => {
       <HowItWorks />
       <SavingsCalculator />
       <ContactForm />
-      <CTA />
       <Footer />
     </main>
   );

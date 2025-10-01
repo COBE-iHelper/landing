@@ -9,7 +9,7 @@ const benefits = [
 ];
 
 const CTA = () => {
-  return (
+ {{
     <section className="py-20 px-4 gradient-hero relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
@@ -50,7 +50,9 @@ const CTA = () => {
           </p>
         </div>
       </div>
-    </section>
+    </section> }}
+
+  return (<></>
   );
 };
 

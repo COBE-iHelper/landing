@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { Clock, DollarSign, Users, FileText } from "lucide-react";
+import { Clock, DollarSign, Users, FileText, HandCoins } from "lucide-react";
 
 const SavingsCalculator = () => {
   const [students, setStudents] = useState([50]);
@@ -11,14 +11,14 @@ const SavingsCalculator = () => {
   // Calculations
   // Assume: Each exam takes 2 hours to prepare manually
   // AI reduces preparation time by 75% (saving 1.5 hours per exam)
-  const hoursPerExam = 2;
-  const efficiencyGain = 0.75; // 75% time saved
+  const hoursPerExam =  10 / 60;
+  const efficiencyGain = 1; // 75% time saved
   const hoursSavedPerExam = hoursPerExam * efficiencyGain;
   const totalHoursSaved = students[0] * exams[0] * hoursSavedPerExam;
 
   // Cost calculation
   // Assume: Average instructor cost is $50/hour
-  const costPerHour = 50;
+  const costPerHour = 80;
   const totalMoneySaved = totalHoursSaved * costPerHour;
 
   return (
@@ -61,13 +61,13 @@ const SavingsCalculator = () => {
                   value={students}
                   onValueChange={setStudents}
                   min={10}
-                  max={500}
-                  step={10}
+                  max={150}
+                  step={2}
                   className="w-full"
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
                   <span>10</span>
-                  <span>500</span>
+                  <span>150</span>
                 </div>
               </div>
 
@@ -88,13 +88,13 @@ const SavingsCalculator = () => {
                   value={exams}
                   onValueChange={setExams}
                   min={1}
-                  max={10}
+                  max={100}
                   step={1}
                   className="w-full"
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
                   <span>1</span>
-                  <span>10</span>
+                  <span>100</span>
                 </div>
               </div>
             </div>
@@ -125,28 +125,22 @@ const SavingsCalculator = () => {
             <Card className="p-8 shadow-elegant hover:shadow-glow transition-all duration-300 border-border bg-gradient-to-br from-primary/5 to-primary/10">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="w-6 h-6 text-primary" />
+                  <HandCoins className="w-6 h-6 text-primary" />
                 </div>
                 <div className="flex-1">
                   <p className="text-sm text-muted-foreground mb-2">
                     Cost Savings Per Year
                   </p>
                   <p className="text-4xl font-bold text-foreground mb-1">
-                    ${totalMoneySaved.toLocaleString()}
+                    {totalMoneySaved.toLocaleString()}₪
                   </p>
                   <p className="text-lg text-foreground">saved</p>
                   <p className="text-sm text-muted-foreground mt-3">
-                    Based on ${costPerHour}/hour instructor cost
+                    Based on {costPerHour}₪/hour teacer cost
                   </p>
                 </div>
               </div>
             </Card>
-
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <p className="text-xs text-muted-foreground text-center">
-                * Calculations based on 2 hours of manual prep per exam and 75% efficiency gain with AI
-              </p>
-            </div>
           </div>
         </div>
       </div>
