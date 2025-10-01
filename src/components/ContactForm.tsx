@@ -115,7 +115,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <p className="text-sm text-muted-foreground">contact@ihelp.com</p>
+                    <p className="text-sm text-muted-foreground">taw.coding@gmail.com</p>
                   </div>
                 </div>
 
@@ -124,9 +124,9 @@ const ContactForm = () => {
                     <Building2 className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground">For Institutions</p>
+                    <p className="font-medium text-foreground">Schools</p>
                     <p className="text-sm text-muted-foreground">
-                      Custom solutions and enterprise pricing available
+                      You can schedule a demo or meeting with us at your convenience.
                     </p>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ const ContactForm = () => {
                           <div className="relative">
                             <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                             <Input
-                              placeholder="Your institution or company"
+                              placeholder="Your institution or school"
                               className="pl-10"
                               {...field}
                             />

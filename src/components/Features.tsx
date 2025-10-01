@@ -1,29 +1,29 @@
 import { Card } from "@/components/ui/card";
-import { Bot, Mic, Layers, Zap } from "lucide-react";
+import { Bot, Mic, Layers, Zap, DollarSign } from "lucide-react";
 
 const features = [
   {
     icon: Bot,
-    title: "AI-Powered Exam Proxy",
-    description: "Experience realistic exam conditions with our AI that simulates examiners and provides intelligent feedback on your responses.",
+    title: "AI-Powered Exam Simulation",
+    description: "Experience realistic exam conditions with our AI that simulates the real exam platform and provides intelligent feedback on your responses.",
     color: "text-accent"
   },
   {
     icon: Mic,
-    title: "Recording & Analytics",
-    description: "Record your practice sessions, replay them, and track your performance with detailed analytics and progress metrics.",
+    title: "Instant Analytics",
+    description: "Record your practice sessions, replay them, and track your performance with detailed on-submittion analytics and progress metrics.",
     color: "text-accent"
   },
   {
-    icon: Layers,
-    title: "Full-Stack Architecture",
-    description: "Built on robust Express.js and Fastify backends with a responsive frontend using Vanilla JS and HTMX for seamless interactions.",
+    icon: DollarSign,
+    title: "Saving time & Money",
+    description: "Instructors/teachers save hours of prep time per exam, reducing costs and allowing focus on personalized student support.",
     color: "text-accent"
   },
   {
     icon: Zap,
-    title: "Scalable & Extensible",
-    description: "Modular design allows easy integration with additional exam types and languages, growing with your needs.",
+    title: "Fast & Easy Setup",
+    description: "Get started in minutes, and get blazingly fast application performance with our optimized platform.",
     color: "text-accent"
   }
 ];

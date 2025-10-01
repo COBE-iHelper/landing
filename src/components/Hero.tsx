@@ -31,7 +31,7 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button variant="hero" size="lg" className="text-base">
-              Get Started Free
+              Get Started
               <ArrowRight className="ml-2" />
             </Button>
             <Button variant="outline" size="lg" className="text-base bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/20">
@@ -51,7 +51,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 transition-all hover:bg-primary-foreground/15 hover:scale-105">
               <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></div>
-              <span className="text-sm font-medium text-primary-foreground">Multi-language Support</span>
+              <span className="text-sm font-medium text-primary-foreground">Accessible</span>
             </div>
           </div>
         </div>

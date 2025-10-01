@@ -5,14 +5,14 @@ const steps = [
   {
     number: "01",
     icon: UserPlus,
-    title: "Sign Up & Select Exam",
-    description: "Create your account and choose your exam type - COBE or Hebrew oral exam preparation."
+    title: "Setup",
+    description: "Install the application, insert your school code, and start usig the platform in minutes."
   },
   {
     number: "02",
     icon: MessageSquare,
     title: "Practice with AI",
-    description: "Engage with our AI examiner, record your responses, and receive instant feedback on your performance."
+    description: "Start practicing your oral exams, and recieve instant AI feedback on your performance."
   },
   {
     number: "03",
