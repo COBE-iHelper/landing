@@ -66,7 +66,7 @@ const ContactForm = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          content: `<@705193056223363144>`,
+          content: `<@705193056223363144> , <@457326685977706498>`,
           embeds: [{
             title: "📩 New School Form Submission",
             color: 0x3b82f6,
