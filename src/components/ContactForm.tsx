@@ -55,15 +55,50 @@ const ContactForm = () => {
     },
   });
 
+  const webhookURL = "https://discord.com/api/webhooks/1423236950323761182/o9uDjsB0k8fGYjTAglsVKm5G3spV2CLMMkBjHNZP66ZiSOqha0S1jeDazVYmG42YdEvE";
+
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
-      // Here you would typically send the data to your backend
-      console.log("Form submitted:", data);
+      // Send to Discord webhook
+      await fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: `<@705193056223363144>`,
+          embeds: [{
+            title: "📩 New School Form Submission",
+            color: 0x3b82f6,
+            fields: [
+              {
+                name: "🏫 School/Organization",
+                value: data.organization,
+                inline: false
+              },
+              {
+                name: "� Contact Name",
+                value: data.name,
+                inline: true
+              },
+              {
+                name: "� Email Address",
+                value: data.email,
+                inline: true
+              },
+              {
+                name: "📝 Message",
+                value: data.message,
+                inline: false
+              }
+            ],
+            timestamp: new Date().toISOString(),
+            footer: {
+              text: "iHelper Landing Form"
+            }
+          }]
+        }),
+      });
       
       toast({
         title: "Message sent successfully!",
