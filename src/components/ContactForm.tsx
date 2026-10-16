@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { toast } from "@/hooks/use-toast";
 import { Mail, Send, User, Building2 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const contactSchema = z.object({
   name: z
@@ -44,6 +45,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { language } = useLanguage();
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -77,12 +79,12 @@ const ContactForm = () => {
                 inline: false
               },
               {
-                name: "� Contact Name",
+                name: "👤 Contact Name",
                 value: data.name,
                 inline: true
               },
               {
-                name: "� Email Address",
+                name: "📧 Email Address",
                 value: data.email,
                 inline: true
               },
@@ -101,15 +103,15 @@ const ContactForm = () => {
       });
       
       toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you as soon as possible.",
+        title: language === "ar" ? "تم إرسال الرسالة بنجاح!" : "Message sent successfully!",
+        description: language === "ar" ? "سنقوم بالرد عليكم في أقرب وقت ممكن." : "We'll get back to you as soon as possible.",
       });
       
       form.reset();
     } catch (error) {
       toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
+        title: language === "ar" ? "حدث خطأ غير متوقع" : "Something went wrong",
+        description: language === "ar" ? "يرجى المحاولة مرة أخرى لاحقاً." : "Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -118,14 +120,16 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-20 px-4 gradient-feature">
+    <section id="contact" className="py-24 px-4 gradient-feature">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Are you interested?
+          <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
+            {language === "ar" ? "جهّز مدرستك مع SkillUp iHelp" : "Bring the Ecosystem to Your School"}
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Feel free to get in touch with us
+          <p className="text-base md:text-lg text-muted-foreground">
+            {language === "ar"
+              ? "احجز عرضاً تقديمياً لطاقم اللغة الإنجليزية في مدرستك أو اطلب وصولاً تجريبياً."
+              : "Schedule a demo for your school's English department or request pilot access."}
           </p>
         </div>
 
@@ -135,11 +139,12 @@ const ContactForm = () => {
             <div className="space-y-6">
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-4">
-                  Let's Talk
+                  {language === "ar" ? "تواصل معنا مباشرة" : "Let's Talk"}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Whether you're an educational institution looking to improve exam preparation 
-                  or a student seeking better tools, we'd love to hear from you.
+                  {language === "ar"
+                    ? "سواء كنت مؤسسة تعليمية تسعى لتطوير إعداد طلابها لامتحان البجروت الشفوي، أو مركزاً يرغب بأتمتة الفحص، يسعدنا التحدث معكم."
+                    : "Whether you're an educational institution looking to improve exam preparation or a teacher seeking better evaluation tools, we'd love to hear from you."}
                 </p>
               </div>
 
@@ -149,7 +154,7 @@ const ContactForm = () => {
                     <Mail className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground">Email</p>
+                    <p className="font-medium text-foreground">{language === "ar" ? "البريد الإلكتروني" : "Email"}</p>
                     <p className="text-sm text-muted-foreground">taw.coding@gmail.com</p>
                   </div>
                 </div>
@@ -159,9 +164,11 @@ const ContactForm = () => {
                     <Building2 className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground">Schools</p>
+                    <p className="font-medium text-foreground">{language === "ar" ? "للمدارس والشبكات" : "Schools & Networks"}</p>
                     <p className="text-sm text-muted-foreground">
-                      You can schedule a demo or meeting with us at your convenience.
+                      {language === "ar"
+                        ? "يمكنكم جدولة لقاء أو جلسة تدريب عبر زوم أو زيارة مدرسية حسب رغبتكم."
+                        : "You can schedule a demo or meeting with us at your convenience."}
                     </p>
                   </div>
                 </div>
@@ -169,7 +176,7 @@ const ContactForm = () => {
 
               <div className="pt-6 border-t border-border">
                 <p className="text-sm text-muted-foreground">
-                  We typically respond within 24 hours during business days.
+                  {language === "ar" ? "نقوم بالرد عادةً خلال 24 ساعة في أيام العمل." : "We typically respond within 24 hours during business days."}
                 </p>
               </div>
             </div>
@@ -183,13 +190,13 @@ const ContactForm = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Name</FormLabel>
+                        <FormLabel className="text-foreground">{language === "ar" ? "الاسم الكامل" : "Name"}</FormLabel>
                         <FormControl>
                           <div className="relative">
-                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                            <User className="absolute left-3 rtl:left-auto rtl:right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                             <Input
-                              placeholder="Your full name"
-                              className="pl-10"
+                              placeholder={language === "ar" ? "اسمك الكامل" : "Your full name"}
+                              className="pl-10 rtl:pl-3 rtl:pr-10"
                               {...field}
                             />
                           </div>
@@ -204,14 +211,14 @@ const ContactForm = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Email</FormLabel>
+                        <FormLabel className="text-foreground">{language === "ar" ? "البريد الإلكتروني" : "Email"}</FormLabel>
                         <FormControl>
                           <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                            <Mail className="absolute left-3 rtl:left-auto rtl:right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                             <Input
                               type="email"
                               placeholder="your.email@example.com"
-                              className="pl-10"
+                              className="pl-10 rtl:pl-3 rtl:pr-10"
                               {...field}
                             />
                           </div>
@@ -226,13 +233,13 @@ const ContactForm = () => {
                     name="organization"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Organization</FormLabel>
+                        <FormLabel className="text-foreground">{language === "ar" ? "المدرسة أو المؤسسة" : "Organization"}</FormLabel>
                         <FormControl>
                           <div className="relative">
-                            <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                            <Building2 className="absolute left-3 rtl:left-auto rtl:right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                             <Input
-                              placeholder="Your institution or school"
-                              className="pl-10"
+                              placeholder={language === "ar" ? "اسم المدرسة الثانوية أو الكلية" : "Your institution or school"}
+                              className="pl-10 rtl:pl-3 rtl:pr-10"
                               {...field}
                             />
                           </div>
@@ -247,10 +254,10 @@ const ContactForm = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Message</FormLabel>
+                        <FormLabel className="text-foreground">{language === "ar" ? "الرسالة" : "Message"}</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Tell us about your needs and how we can help..."
+                            placeholder={language === "ar" ? "أخبرنا عن عدد الطلاب واحتياجات طاقم اللغة الإنجليزية..." : "Tell us about your needs and how we can help..."}
                             className="min-h-[120px] resize-none"
                             {...field}
                           />
@@ -268,11 +275,11 @@ const ContactForm = () => {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      "Sending..."
+                      language === "ar" ? "جارٍ الإرسال..." : "Sending..."
                     ) : (
                       <>
-                        Send Message
-                        <Send className="ml-2 w-4 h-4" />
+                        {language === "ar" ? "إرسال الطلب" : "Send Message"}
+                        <Send className="ml-2 rtl:mr-2 rtl:ml-0 w-4 h-4" />
                       </>
                     )}
                   </Button>
