@@ -134,7 +134,7 @@ const Ecosystem = () => {
 
             <div className="pt-4 border-t border-border flex items-center justify-between">
               <span className="text-xs font-medium text-muted-foreground">
-                Efficiency: 85% Teacher Time Saved
+                {t("eco.teachers")}
               </span>
               <a href="#teacher-dashboard" className="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
                 {t("eco.viewPortal")} <ArrowRight className="w-3.5 h-3.5" />

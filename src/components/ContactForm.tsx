@@ -57,51 +57,18 @@ const ContactForm = () => {
     },
   });
 
-  const webhookURL = "https://discord.com/api/webhooks/1423236950323761182/o9uDjsB0k8fGYjTAglsVKm5G3spV2CLMMkBjHNZP66ZiSOqha0S1jeDazVYmG42YdEvE";
-
+  // Public form endpoint only; webhook credentials belong on its server.
+  const contactUrl = import.meta.env.VITE_CONTACT_FORM_URL;
   const onSubmit = async (data: ContactFormValues) => {
+    if (!contactUrl) return;
     setIsSubmitting(true);
-    
     try {
-      // Send to Discord webhook
-      await fetch(webhookURL, {
+      const response = await fetch(contactUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          content: `<@705193056223363144> , <@457326685977706498>`,
-          embeds: [{
-            title: "📩 New School Form Submission",
-            color: 0x3b82f6,
-            fields: [
-              {
-                name: "🏫 School/Organization",
-                value: data.organization,
-                inline: false
-              },
-              {
-                name: "👤 Contact Name",
-                value: data.name,
-                inline: true
-              },
-              {
-                name: "📧 Email Address",
-                value: data.email,
-                inline: true
-              },
-              {
-                name: "📝 Message",
-                value: data.message,
-                inline: false
-              }
-            ],
-            timestamp: new Date().toISOString(),
-            footer: {
-              text: "iHelper Landing Form"
-            }
-          }]
-        }),
+        body: JSON.stringify(data),
       });
-      
+      if (!response.ok) throw new Error("Contact request failed");
       toast({
         title: language === "ar" ? "تم إرسال الرسالة بنجاح!" : "Message sent successfully!",
         description: language === "ar" ? "سنقوم بالرد عليكم في أقرب وقت ممكن." : "We'll get back to you as soon as possible.",
@@ -155,7 +122,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">{language === "ar" ? "البريد الإلكتروني" : "Email"}</p>
-                    <p className="text-sm text-muted-foreground">taw.coding@gmail.com</p>
+                    <a className="text-sm text-accent hover:underline" href="mailto:taw.coding@gmail.com">taw.coding@gmail.com</a>
                   </div>
                 </div>
 
@@ -183,6 +150,11 @@ const ContactForm = () => {
 
             {/* Right side - Form */}
             <div>
+              {!contactUrl && (
+                <p className="text-sm text-muted-foreground mb-6">
+                  {language === "ar" ? "للاستفسارات، راسلنا عبر البريد الإلكتروني الموضح هنا." : "For enquiries, use the email address shown here."}
+                </p>
+              )}
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
@@ -272,7 +244,7 @@ const ContactForm = () => {
                     variant="hero"
                     size="lg"
                     className="w-full"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !contactUrl}
                   >
                     {isSubmitting ? (
                       language === "ar" ? "جارٍ الإرسال..." : "Sending..."

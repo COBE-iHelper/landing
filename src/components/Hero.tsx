@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,30 +9,14 @@ import {
   Award,
   BookOpen,
   CheckCircle2,
-  KeyRound,
-  Check,
 } from "lucide-react";
 import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
 import { useLanguage } from "@/context/LanguageContext";
+import { appLink } from "@/lib/app-link";
 
 const Hero = () => {
-  const [classCode, setClassCode] = useState("");
-  const [joinedMessage, setJoinedMessage] = useState(false);
   const { t } = useLanguage();
-
-  const handleJoinClass = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (classCode.trim()) {
-      setJoinedMessage(true);
-      setTimeout(() => {
-        const targetElement = document.getElementById("teacher-dashboard");
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 1200);
-    }
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero pt-28 pb-16">
@@ -112,43 +95,14 @@ const Hero = () => {
             {t("hero.subtitle")}
           </p>
 
-          {/* Student Class Code Quick Join Box */}
-          <div className="max-w-md mx-auto mb-8">
-            <form
-              onSubmit={handleJoinClass}
-              className="p-1.5 rounded-2xl bg-primary-foreground/15 border border-primary-foreground/25 backdrop-blur-xl flex items-center gap-2 shadow-lg"
-            >
-              <div className="pl-3 text-primary-foreground/70">
-                <KeyRound className="w-4 h-4" />
-              </div>
-              <input
-                type="text"
-                value={classCode}
-                onChange={(e) => setClassCode(e.target.value.toUpperCase())}
-                placeholder={t("hero.codePlaceholder")}
-                className="bg-transparent border-none text-primary-foreground placeholder:text-primary-foreground/60 text-xs sm:text-sm px-2 py-2 w-full focus:outline-none font-mono uppercase tracking-wider font-semibold"
-              />
-              <Button
-                type="submit"
-                variant="hero"
-                size="sm"
-                className="whitespace-nowrap text-xs font-bold px-4 py-2"
-              >
-                {joinedMessage ? (
-                  <span className="flex items-center gap-1 text-emerald-950">
-                    <Check className="w-3.5 h-3.5" /> {t("hero.joined")}
-                  </span>
-                ) : (
-                  t("hero.joinBtn")
-                )}
+          <div className="max-w-md mx-auto mb-8 text-center">
+            <a href={appLink("/signup")}>
+              <Button variant="hero" size="lg" className="w-full gap-2">
+                <Mic className="w-5 h-5" /> {t("hero.practice")}
+                <ArrowRight className="w-4 h-4" />
               </Button>
-            </form>
-
-            {joinedMessage && (
-              <p className="text-xs text-accent mt-2 animate-in fade-in font-medium flex items-center justify-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5" /> {t("hero.joinedMessage")}
-              </p>
-            )}
+            </a>
+            <p className="text-sm text-primary-foreground/75 mt-3">{t("hero.allowance")}</p>
           </div>
 
           {/* Call to action buttons */}
@@ -161,7 +115,7 @@ const Hero = () => {
               </Button>
             </a>
 
-            <a href="#teacher-dashboard">
+            <a href={appLink("/teacher")}>
               <Button
                 variant="outline"
                 size="lg"

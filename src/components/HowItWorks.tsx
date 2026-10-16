@@ -6,23 +6,23 @@ const stepsEn = [
   {
     number: "01",
     icon: UserCheck,
-    title: "Join with Code or Start Self-Study",
+    title: "Create Your Account",
     description:
-      "Enter your teacher's 8-digit class code (e.g. ABCD1234) or launch self-guided practice instantly on any phone or laptop.",
+      "Sign up and verify your email. School students accept a personal invitation from their teacher; individuals can use the free weekly allowance.",
   },
   {
     number: "02",
     icon: MessageSquare,
     title: "Practice Spoken Bagrut with AI",
     description:
-      "Engage with our AI examiner across official COBE interview prompts and video clips. Receive instantaneous feedback on fluency and grammar.",
+      "Choose an exam interface, record personal and project answers, and respond to two questions about a video clip. Submit your original audio for grading.",
   },
   {
     number: "03",
     icon: Award,
-    title: "Review Audio & Sync Ministry Grades",
+    title: "Review Grades & Progress",
     description:
-      "Teachers listen to audio recordings, verify the AI rubric score with one click, and export grades directly to Ministry systems.",
+      "Review grades and past attempts. Paid and school accounts receive detailed feedback; teachers follow progress across their classes.",
   },
 ];
 
@@ -30,23 +30,23 @@ const stepsAr = [
   {
     number: "01",
     icon: UserCheck,
-    title: "الانضمام برمز الصف أو البدء فوراً",
+    title: "إنشاء حسابك",
     description:
-      "يقوم الطالب بإدخال رمز الصف المكون من 8 خانات (مثل ABCD1234) أو يبدأ التدريب الذاتي مباشرة من أي هاتف أو كمبيوتر.",
+      "سجل حسابك وأكد بريدك الإلكتروني. يقبل طلاب المدارس دعوة شخصية من المعلم، ويمكن للأفراد استخدام الحصة الأسبوعية المجانية.",
   },
   {
     number: "02",
     icon: MessageSquare,
     title: "التدرب على المحادثة مع الممتحن الذكي",
     description:
-      "يتفاعل الطالب صوتياً مع ممتحن الذكاء الاصطناعي مجيباً على أسئلة المقابلة والمشروع، ويتلقى تقييماً لحظياً للطلاقة والقواعد.",
+      "اختر واجهة الامتحان وسجل إجاباتك الشخصية وعن المشروع وسؤالين حول مقطع فيديو، ثم أرسل التسجيلات الأصلية للتقييم.",
   },
   {
     number: "03",
     icon: Award,
-    title: "مراجعة التسجيل واعتماد علامات الوزارة",
+    title: "مراجعة العلامات والتقدم",
     description:
-      "يستمع المعلم للتسجيل الصوتي للطالب، ويعتمد العلامة بضغطة زر واحدة، ويصدر النتائج مباشرة لسجلات درجات المدرسة.",
+      "راجع العلامات والمحاولات السابقة. تحصل الحسابات المدفوعة والمدرسية على ملاحظات مفصلة، ويتابع المعلم تقدم طلاب صفوفه.",
   },
 ];
 

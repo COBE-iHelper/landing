@@ -9,67 +9,55 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const faqsEn = [
   {
-    question: "How does the AI evaluate oral responses against the Ministry of Education rubric?",
-    answer:
-      "Our AI voice model is calibrated specifically on Israel's official COBE oral rubric. It scores spoken responses across four key criteria: Fluency & Pronunciation (30%), Vocabulary Diversity & CEFR level (30%), Grammar Accuracy (20%), and Task Completion (20%). It provides instant numerical grades and pinpoint qualitative feedback for student improvement.",
+    question: "How are oral responses graded?",
+    answer: "The original audio is evaluated with the COBE rubric. Topic development, delivery, vocabulary and language weigh 60/10/20/10 for 4 units and 50/15/20/15 for 5 units. Personal and project responses each count for 25 points; two clip responses count for 25 each. These are AI practice grades. Paid and school accounts also receive strengths, mistakes and explanations.",
   },
   {
-    question: "How do teachers set up classes and assign mock oral exams?",
-    answer:
-      "Within seconds, a teacher logs into the Teacher Portal, creates a classroom (e.g. 'Grade 11B - COBE Prep'), and generates a unique 8-character join code (such as ABCD1234). Students enter this code on their phones or laptops to join. As students record their mock exams, all recordings, AI-suggested grades, and transcripts stream live into the teacher's dashboard.",
+    question: "How do teachers and students join a school?",
+    answer: "The school operator invites teachers by email. Teachers create their classes and email personal invitations to students. Students register and verify their own accounts, then accept their invitation. Teachers can review only students in their assigned classes.",
   },
   {
-    question: "Does iHelp support both 4-point and 5-point English Bagrut tracks?",
-    answer:
-      "Yes! iHelp fully supports both the 4-point and 5-point matriculation tracks. The AI examiner automatically calibrates its question complexity, vocabulary depth, and scoring rubric thresholds according to the student's enrolled level.",
+    question: "How many practice exams can I take?",
+    answer: "Free accounts receive one exam every seven days. Paid individuals and students at subscribed schools receive ten completed exams per Israel calendar day. Technical grading failures refund the allowance. Subscriptions are currently managed by the operator; online payment will be added later.",
   },
   {
-    question: "Does the platform require specialized microphone equipment or software installation?",
-    answer:
-      "Not at all. The entire platform is 100% web-based and responsive. Students and teachers can use any standard computer, Chromebook, iPad, or smartphone with built-in microphones and headphones.",
+    question: "Do I need to install software?",
+    answer: "The browser app works with a microphone and internet connection. Subscribed schools can also use the desktop application. Choose between an official-style exam layout and a modern layout. Navigation supports English, Arabic and Hebrew; exam prompts and responses remain English.",
   },
   {
-    question: "Is student audio data private and protected?",
-    answer:
-      "Yes. All student voice recordings and transcripts are encrypted and accessible strictly by the verified student and their assigned teacher. Audio recordings are never sold or shared with third parties.",
+    question: "Who can access my recordings, and how long are they kept?",
+    answer: "Recordings are stored privately and sent to the configured AI provider for grading. You can play your recordings, and your assigned teacher can review recordings from your school attempts. Audio expires after 90 days; grades, feedback and exam history remain available.",
   },
   {
-    question: "Can our school test the platform before committing to a departmental license?",
-    answer:
-      "Absolutely! We offer free pilot programs for high school English departments and educational networks. Reach out via our contact form below to activate a pilot class code for your school.",
+    question: "Can our school discuss a pilot?",
+    answer: "Contact us below to discuss your school’s needs and subscription access. Individual students can also create an account for one free practice exam every seven days.",
   },
 ];
 
 const faqsAr = [
   {
-    question: "كيف يقيّم الذكاء الاصطناعي الإجابات الشفوية وفق معايير وزارة التربية والتعليم؟",
-    answer:
-      "تم تدريب وضبط نموذج الصوت الذكي خصيصاً وفق المعايير الرسمية لامتحان COBE للبجروت الشفوي في البلاد. يقيّم النموذج الإجابات عبر 4 محاور رئيسية: الطلاقة والنطق الصوتي (30%)، الثروة اللغوية ومستوى المفردات (30%)، دقة القواعد والتراكيب (20%)، وإنجاز المهمة (20%). كما يقدم درجات عددية وملاحظات نوعية دقيقة للتحسين الفوري.",
+    question: "كيف تُقيّم الإجابات الشفوية؟",
+    answer: "تُقيّم التسجيلات الأصلية وفق معايير COBE. أوزان تطوير الموضوع والإلقاء والمفردات واللغة هي 60/10/20/10 لمسار 4 وحدات و50/15/20/15 لمسار 5 وحدات. الإجابة الشخصية والمشروع لكل منهما 25 علامة، وللفيديو إجابتان لكل منهما 25 علامة. هذه علامات تدريبية بالذكاء الاصطناعي، وتشمل الحسابات المدفوعة والمدرسية نقاط القوة والأخطاء وتفسير التقييم.",
   },
   {
-    question: "كيف ينشئ المعلمون الصفوف ويوزعون الامتحانات التجريبية؟",
-    answer:
-      "خلال ثوانٍ معدودة، يدخل المعلم إلى بوابة المعلم، وينشئ صفاً جديداً، ويولد رمز انضمام سريع من 8 خانات (مثل ABCD1234). يدخل الطلاب هذا الرمز من هواتفهم أو حواسيبهم. ومع قيام الطلاب بتسجيل إجاباتهم، تتدفق التسجيلات والعلامات المقترحة والنصوص المفرغة مباشرة إلى شاشة المعلم.",
+    question: "كيف ينضم المعلمون والطلاب إلى المدرسة؟",
+    answer: "يدعو مسؤول المنصة المعلمين بالبريد الإلكتروني. ينشئ المعلم صفوفه ويرسل دعوات شخصية للطلاب. يسجل الطلاب حساباتهم ويؤكدون البريد ثم يقبلون الدعوة. يمكن للمعلم مراجعة طلاب صفوفه المعينة فقط.",
   },
   {
-    question: "هل يدعم نظام iHelp كلاً من مسار 4 وحدات و 5 وحدات؟",
-    answer:
-      "نعم بالتأكيد! يدعم النظام مساري 4 و 5 وحدات بالكامل، حيث يعاير الممتحن الذكي مستوى صعوبة الأسئلة، وثراء المفردات، وسقف العلامات تلقائياً بحسب المسار المحدد للطالب.",
+    question: "كم امتحاناً تدريبياً يمكنني إجراءه؟",
+    answer: "يحصل الحساب المجاني على امتحان كل سبعة أيام. تحصل الحسابات المدفوعة وطلاب المدارس المشتركة على عشرة امتحانات مكتملة في اليوم حسب توقيت إسرائيل. تُسترد الحصة عند فشل تقني في التقييم. تُدار الاشتراكات حالياً بواسطة مسؤول المنصة، وسيُضاف الدفع الإلكتروني لاحقاً.",
   },
   {
-    question: "هل تحتاج المنصة إلى ميكروفونات خاصة أو تثبيت برامج؟",
-    answer:
-      "كلا، المنصة سحابية وتعمل 100% عبر المتصفح. يستطيع الطلاب والمعلمون استخدام أي حاسوب عادي أو كروم بوك أو تابلت أو هاتف ذكي بميكروفون وسماعات عادية.",
+    question: "هل يجب تثبيت برنامج؟",
+    answer: "يعمل التطبيق عبر المتصفح مع ميكروفون واتصال بالإنترنت، ويمكن للمدارس المشتركة استخدام تطبيق سطح المكتب أيضاً. تتوفر واجهة بنمط الامتحان وواجهة حديثة، مع تنقل بالعربية والعبرية والإنجليزية. تبقى أسئلة الامتحان والإجابات باللغة الإنجليزية.",
   },
   {
-    question: "هل التسجيلات الصوتية وبيانات الطلاب محمية وتتمتع بالخصوصية؟",
-    answer:
-      "نعم، جميع التسجيلات الصوتية ونصوص التفريغ مشفرة بالكامل، ولا تتاح إلا للطالب ومعلمه المعتمد في المدرسة، ولا يتم أبداً بيع البيانات أو مشاركتها مع أي جهة خارجية.",
+    question: "من يمكنه الوصول إلى تسجيلاتي، وكم تُحفظ؟",
+    answer: "تُحفظ التسجيلات بشكل خاص وتُرسل إلى مزود الذكاء الاصطناعي المحدد للتقييم. يمكنك الاستماع إلى تسجيلاتك، ويمكن لمعلم صفك مراجعة تسجيلات محاولاتك المدرسية. تنتهي صلاحية الصوت بعد 90 يوماً، وتبقى العلامات والملاحظات وسجل الامتحانات.",
   },
   {
-    question: "هل يمكن لمدرستنا تجربة المنصة ضمن برنامج تجريبي أولاً؟",
-    answer:
-      "بكل سرور! نحن نقدم برامج تجريبية مجانية لمدارس المرحلة الثانوية وأقسام اللغة الإنجليزية. تواصلوا معنا عبر النموذج أدناه لتفعيل رمز تجريبي لمدرستكم.",
+    question: "هل يمكن مناقشة تجربة المنصة لمدرستنا؟",
+    answer: "تواصلوا معنا أدناه لمناقشة احتياجات المدرسة والاشتراك. ويمكن للطلاب إنشاء حساب فردي للحصول على امتحان مجاني كل سبعة أيام.",
   },
 ];
 
@@ -89,8 +77,8 @@ const FAQ = () => {
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             {language === "ar"
-              ? "إجابات شافية حول SkillUp iHelp، متطلبات امتحان COBE، رموز الصفوف، ومعايير التقييم."
-              : "Have questions about SkillUp iHelp, COBE Bagrut guidelines, classroom codes, or rubric scoring? We've got answers."}
+              ? "إجابات شافية حول SkillUp iHelp، متطلبات امتحان COBE، دعوات الصفوف، ومعايير التقييم."
+              : "Have questions about SkillUp iHelp, COBE Bagrut guidelines, classroom invitations, or rubric scoring? We've got answers."}
           </p>
         </div>
 

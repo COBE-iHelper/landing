@@ -71,3 +71,18 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## iHelp application links
+
+Set `VITE_IHELP_APP_URL` to the separate iHelp browser deployment before building
+or deploying this site. Student signup and teacher login use that URL; school
+membership is established by account invitations, not the old demo class-code form.
+The `/app` fallback is for hosting the application under the same origin and
+requires routing to be configured by the host. For local development, set
+`VITE_IHELP_APP_URL=http://localhost:5173`.
+
+The marketing page links to the real authenticated teacher portal. The old
+fabricated classroom dashboard, class-code join and Ministry-sync demo are retired.
+For the contact form, configure a public `VITE_CONTACT_FORM_URL` endpoint that
+accepts `{name,email,organization,message}` JSON. Keep delivery/webhook credentials
+on that endpoint's server. Without it, visitors can use the displayed email link.

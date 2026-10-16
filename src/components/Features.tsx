@@ -20,16 +20,16 @@ const featuresEn = [
   },
   {
     icon: BarChart3,
-    title: "Instant Rubric Analytics",
+    title: "Rubric Grades & Progress",
     description:
-      "Get immediate grading aligned with Israel's Ministry of Education criteria: Fluency & Pronunciation, Vocabulary Variety, Grammar Accuracy, and Task Completion.",
+      "Receive grades for topic development, delivery, vocabulary and language. Detailed feedback is included for paid and school accounts.",
     badge: "Official MoE Rubric",
   },
   {
     icon: School,
-    title: "Teacher Classroom Codes",
+    title: "Personal School Invitations",
     description:
-      "Teachers generate 8-character class codes (e.g., ABCD1234). Students join instantly, and teachers get all oral recordings and auto-suggested grades in one centralized portal.",
+      "Teachers create classes and invite students by email. Each student has an individual account, exam history and private recordings.",
     badge: "EdTech Dashboard",
   },
   {
@@ -41,10 +41,10 @@ const featuresEn = [
   },
   {
     icon: Clock,
-    title: "85% Time Saved for Schools",
+    title: "Teacher Class Analytics",
     description:
-      "Say goodbye to spending 15 minutes per student doing 1-on-1 oral Bagrut tests. Teachers can grade an entire cohort of 100+ students in minutes with automated AI pre-scoring.",
-    badge: "Massive Efficiency",
+      "Follow participation and score trends, review student attempts, and identify strong students and those who need more attention.",
+    badge: "Class Progress",
   },
   {
     icon: ShieldCheck,
@@ -65,16 +65,16 @@ const featuresAr = [
   },
   {
     icon: BarChart3,
-    title: "تقييم فوري بالمعايير الرسمية",
+    title: "علامات وتقدم وفق المعايير",
     description:
-      "تصحيح وعلامات فورية مطابقة لمعايير وزارة التربية والتعليم: الطلاقة ومخارج الحروف، تنوع المفردات، دقة القواعد، وإنجاز المهمة المطلوبة.",
+      "علامات في تطوير الموضوع والإلقاء والمفردات واللغة، مع ملاحظات مفصلة للحسابات المدفوعة والمدرسية.",
     badge: "معايير الوزارة الرسمية",
   },
   {
     icon: School,
-    title: "رموز انضمام سريعة للصفوف",
+    title: "دعوات مدرسية شخصية",
     description:
-      "ينشئ المعلم رمز صف مكون من 8 خانات (مثل ABCD1234). ينضم الطلاب فوراً، وتصل كافة التسجيلات الصوتية والعلامات المقترحة إلى لوحة تحكم المعلم.",
+      "ينشئ المعلم صفوفاً ويدعو الطلاب بالبريد الإلكتروني. لكل طالب حساب شخصي وسجل امتحانات وتسجيلات خاصة.",
     badge: "لوحة تحكم المعلم",
   },
   {
@@ -86,10 +86,10 @@ const featuresAr = [
   },
   {
     icon: Clock,
-    title: "توفير 85% من وقت المعلمين",
+    title: "تحليلات صفوف المعلم",
     description:
-      "وداعاً لإهدار 15 دقيقة لكل طالب في الاختبارات الشفوية الفردية. يستطيع المعلمون الآن تقييم صفوف تضم أكثر من 100 طالب بدقائق معدودة عبر التقييم الآلي.",
-    badge: "كفاءة قياسية",
+      "تابع المشاركة وتطور العلامات، وراجع محاولات الطلاب، وحدد المتفوقين ومن يحتاجون إلى مزيد من الاهتمام.",
+    badge: "تقدم الصف",
   },
   {
     icon: ShieldCheck,

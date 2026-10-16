@@ -5,6 +5,7 @@ import { Menu, X, Sparkles, GraduationCap, School, BookOpen, Globe } from "lucid
 import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
 import { useLanguage } from "@/context/LanguageContext";
+import { appLink } from "@/lib/app-link";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -117,7 +118,7 @@ const Navbar = () => {
             <span>{t("nav.langSwitch")}</span>
           </Button>
 
-          <a href="#teacher-dashboard">
+          <a href={appLink("/teacher")}>
             <Button
               variant="outline"
               size="sm"
@@ -127,7 +128,7 @@ const Navbar = () => {
               {t("nav.teacherLogin")}
             </Button>
           </a>
-          <a href="#contact">
+          <a href={appLink("/signup")}>
             <Button variant="hero" size="sm" className="gap-1.5">
               <GraduationCap className="w-4 h-4" />
               {t("nav.getStarted")}
@@ -204,13 +205,13 @@ const Navbar = () => {
             </a>
           </div>
           <div className="pt-4 border-t border-border flex flex-col gap-2.5">
-            <a href="#teacher-dashboard" onClick={() => setMobileMenuOpen(false)}>
+            <a href={appLink("/teacher")} onClick={() => setMobileMenuOpen(false)}>
               <Button variant="outline" className="w-full justify-center">
                 <School className="w-4 h-4 mr-2 text-accent" />
                 {t("nav.teacherLogin")}
               </Button>
             </a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
+            <a href={appLink("/signup")} onClick={() => setMobileMenuOpen(false)}>
               <Button variant="hero" className="w-full justify-center">
                 <GraduationCap className="w-4 h-4 mr-2" />
                 {t("nav.getStarted")}

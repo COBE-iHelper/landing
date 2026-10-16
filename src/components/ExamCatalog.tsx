@@ -11,6 +11,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { appLink } from "@/lib/app-link";
 
 interface BagrutPart {
   id: string;
@@ -19,7 +20,6 @@ interface BagrutPart {
   focus: string;
   prompt: string;
   sampleAnswer: string;
-  rubricCriteria: { name: string; pts: string; desc: string }[];
   teacherTip: string;
 }
 
@@ -27,87 +27,36 @@ const bagrutPartsEn: BagrutPart[] = [
   {
     id: "part-a",
     part: "Part A • Personal Interview",
-    weight: "30% of Total Grade",
+    weight: "25% of Total Grade",
     focus: "Spontaneous interaction on personal background, hobbies, values, and experiences",
     prompt:
       "Tell me about a hobby or after-school activity you are passionate about. How did you get started, and what important life skills has it taught you?",
     sampleAnswer:
       "One activity I am deeply passionate about is volunteering at our local youth center. I started three years ago through our school community service program. Working with younger children taught me immense patience, active listening, and how to resolve conflicts calmly.",
-    rubricCriteria: [
-      {
-        name: "Fluency & Cadence",
-        pts: "10 pts",
-        desc: "Natural rate of speech, continuous communication with minimal hesitation",
-      },
-      {
-        name: "Vocabulary Range",
-        pts: "10 pts",
-        desc: "Rich descriptive adjectives and appropriate idiomatic expressions",
-      },
-      {
-        name: "Grammar Accuracy",
-        pts: "10 pts",
-        desc: "Proper use of past simple, present perfect, and complex sentence connectors",
-      },
-    ],
     teacherTip:
       "Encourage students to expand beyond one-sentence answers by using the PREP method (Point, Reason, Example, Point).",
   },
   {
     id: "part-b",
     part: "Part B • Project Presentation",
-    weight: "40% of Total Grade",
+    weight: "25% of Total Grade",
     focus: "Structured spoken delivery of the student's high school English research inquiry",
     prompt:
       "Describe the main research question of your English project. What sources did you examine, and what was the most surprising conclusion you reached?",
     sampleAnswer:
       "In our English research inquiry, we investigated how remote work environments impact workplace productivity and mental health. We surveyed several corporate managers and reviewed academic case studies. Surprisingly, we discovered that hybrid arrangements produce higher satisfaction than fully remote models.",
-    rubricCriteria: [
-      {
-        name: "Content & Inquiry Depth",
-        pts: "15 pts",
-        desc: "Clear thesis statement, research findings, and reflective personal conclusions",
-      },
-      {
-        name: "Academic Lexical Range",
-        pts: "15 pts",
-        desc: "Sophisticated vocabulary: 'methodology', 'investigated', 'hybrid arrangements'",
-      },
-      {
-        name: "Clarity & Pronunciation",
-        pts: "10 pts",
-        desc: "Accurate word stress, clear enunciation, and coherent discourse markers",
-      },
-    ],
     teacherTip:
       "Students should never read from notes! iHelp trains them to speak spontaneously using bullet-point conceptual memory.",
   },
   {
     id: "part-c",
     part: "Part C • Video Clip Response",
-    weight: "30% of Total Grade",
+    weight: "50% — two answers of 25 points",
     focus: "Listening comprehension of an authentic video clip followed by spoken analytical synthesis",
     prompt:
       "Based on the clip you just watched about renewable solar innovations, what were the main obstacles faced by the engineers and how did community collaboration help them succeed?",
     sampleAnswer:
       "According to the clip, the primary obstacle was developing cost-effective battery storage for remote desert villages during winter storms. Community collaboration proved vital because local residents provided geographical knowledge that allowed engineers to position panels optimally.",
-    rubricCriteria: [
-      {
-        name: "Comprehension & Analysis",
-        pts: "10 pts",
-        desc: "Accurate recall of key facts, causal relationships, and speaker perspectives",
-      },
-      {
-        name: "Cause-and-Effect Synthesis",
-        pts: "10 pts",
-        desc: "Connecting the obstacle directly to the solution using linking adverbs",
-      },
-      {
-        name: "Grammar & Phonetic Precision",
-        pts: "10 pts",
-        desc: "Consistent verb agreement and intelligible spoken delivery",
-      },
-    ],
     teacherTip:
       "Teach students to take quick mental notes during the clip and structure their answer with 'First', 'Additionally', and 'Consequently'.",
   },
@@ -117,87 +66,36 @@ const bagrutPartsAr: BagrutPart[] = [
   {
     id: "part-a",
     part: "القسم أ • المقابلة الشخصية (Personal Interview)",
-    weight: "30% من العلامة الكلية",
+    weight: "25% من العلامة الكلية",
     focus: "تفاعل عفوي حول الاهتمامات الشخصية، الهوايات، القيم، والتجارب اليومية",
     prompt:
       "Tell me about a hobby or after-school activity you are passionate about. How did you get started, and what important life skills has it taught you?",
     sampleAnswer:
       "One activity I am deeply passionate about is volunteering at our local youth center. I started three years ago through our school community service program. Working with younger children taught me immense patience, active listening, and how to resolve conflicts calmly.",
-    rubricCriteria: [
-      {
-        name: "الطلاقة وإيقاع الكلام",
-        pts: "10 علامات",
-        desc: "سرعة كلام طبيعية وتواصل مستمر دون تردد زائد",
-      },
-      {
-        name: "الثروة اللغوية",
-        pts: "10 علامات",
-        desc: "استخدام مفردات وصفية غنية وتعبيرات اصطلاحية ملائمة",
-      },
-      {
-        name: "دقة القواعد اللغوية",
-        pts: "10 علامات",
-        desc: "استخدام صحيح للأزمنة وأدوات الربط المركبة",
-      },
-    ],
     teacherTip:
       "شجع الطلاب على التوسع بأكثر من جملة واحدة باستخدام منهجية PREP (نقطة، سبب، مثال، استنتاج).",
   },
   {
     id: "part-b",
     part: "القسم ب • عرض المشروع (Project Presentation)",
-    weight: "40% من العلامة الكلية",
+    weight: "25% من العلامة الكلية",
     focus: "عرض شفوي منظم لبحث ومشروع اللغة الإنجليزية في المرحلة الثانوية",
     prompt:
       "Describe the main research question of your English project. What sources did you examine, and what was the most surprising conclusion you reached?",
     sampleAnswer:
       "In our English research inquiry, we investigated how remote work environments impact workplace productivity and mental health. We surveyed several corporate managers and reviewed academic case studies. Surprisingly, we discovered that hybrid arrangements produce higher satisfaction than fully remote models.",
-    rubricCriteria: [
-      {
-        name: "المضمون وعمق البحث",
-        pts: "15 علامة",
-        desc: "عرض واضح لفرضية البحث، النتائج، والاستنتاجات الشخصية",
-      },
-      {
-        name: "المفردات الأكاديمية",
-        pts: "15 علامة",
-        desc: "استخدام مصطلحات بحثية متقدمة في سياقها الصحيح",
-      },
-      {
-        name: "الوضوح ومخارج الحروف",
-        pts: "10 علامات",
-        desc: "نبرة صوت صحيحة ونطق واضح وتماسك في تسلسل الأفكار",
-      },
-    ],
     teacherTip:
       "تنبيه هام للطلاب: تجنب القراءة المباشرة من الورق! يدرب نظام iHelp الطلاب على الحديث العفوي والاستناد على رؤوس أقلام.",
   },
   {
     id: "part-c",
     part: "القسم ج • تحليل مقطع الفيديو (Video Clip Response)",
-    weight: "30% من العلامة الكلية",
+    weight: "50% — إجابتان لكل منهما 25 علامة",
     focus: "فهم مسموع ومرئي لمقطع فيديو أصيل يتبعه تحليل شفوي سببي وربط منطقي",
     prompt:
       "Based on the clip you just watched about renewable solar innovations, what were the main obstacles faced by the engineers and how did community collaboration help them succeed?",
     sampleAnswer:
       "According to the clip, the primary obstacle was developing cost-effective battery storage for remote desert villages during winter storms. Community collaboration proved vital because local residents provided geographical knowledge that allowed engineers to position panels optimally.",
-    rubricCriteria: [
-      {
-        name: "الفهم والتحليل",
-        pts: "10 علامات",
-        desc: "استرجاع دقيق للحقائق الأساسية ووجهات نظر المتحدثين",
-      },
-      {
-        name: "الربط بين السبب والنتيجة",
-        pts: "10 علامات",
-        desc: "ربط المشكلة بالحل مباشرة باستخدام أدوات الربط التحليلية",
-      },
-      {
-        name: "الدقة النحوية والصوتية",
-        pts: "10 علامات",
-        desc: "توافق الفعل والفاعل وسلامة النطق باللغة الإنجليزية",
-      },
-    ],
     teacherTip:
       "درب الطلاب على تدوين ملاحظات ذهنية سريعة أثناء عرض الفيديو وهيكلة إجابتهم بترتيب زمني ومنطقي.",
   },
@@ -274,7 +172,7 @@ const ExamCatalog = () => {
                     <p className="text-xs text-muted-foreground">{item.focus}</p>
                   </div>
 
-                  <a href="#contact">
+                  <a href={appLink("/signup")}>
                     <Button variant="outline" size="sm" className="text-xs gap-1.5 border-accent/40 text-accent hover:bg-accent/10">
                       <GraduationCap className="w-3.5 h-3.5" />
                       {t("curriculum.getAccess")}
@@ -285,7 +183,7 @@ const ExamCatalog = () => {
                 {/* Question Prompt Box */}
                 <div className="mb-6">
                   <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-1.5">
-                    {language === "ar" ? "نموذج لسؤال شفوي رسمي من الوزارة:" : "Sample Official MoE Oral Prompt:"}
+                    {language === "ar" ? "مثال توضيحي لسؤال تدريبي:" : "Illustrative Practice Prompt:"}
                   </span>
                   <div className="p-4 rounded-xl bg-muted/60 border border-border/80">
                     <p className="font-semibold text-foreground text-base leading-relaxed" dir="ltr">
@@ -297,7 +195,7 @@ const ExamCatalog = () => {
                 {/* Model Student Response */}
                 <div className="mb-6">
                   <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-1.5">
-                    {language === "ar" ? "تفريغ نصي لإجابة طالب نموذجية متفوقة:" : "High-Scoring Spoken Response Transcript:"}
+                    {language === "ar" ? "مثال توضيحي لإجابة شفوية:" : "Illustrative Spoken Response:"}
                   </span>
                   <div className="p-4 rounded-xl bg-accent/5 border border-accent/20">
                     <p className="italic text-foreground/90 text-sm leading-relaxed" dir="ltr">
@@ -306,22 +204,10 @@ const ExamCatalog = () => {
                   </div>
                 </div>
 
-                {/* Rubric Breakdown Grid */}
-                <div className="mb-6">
-                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-2">
-                    {language === "ar" ? "معايير التقييم الرسمية في نظام iHelp:" : "Official Rubric Criteria Evaluated by iHelp AI:"}
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {item.rubricCriteria.map((crit, idx) => (
-                      <div key={idx} className="p-3.5 rounded-xl bg-card border border-border/70 shadow-sm">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="font-bold text-xs text-foreground">{crit.name}</span>
-                          <span className="font-black text-xs text-accent">{crit.pts}</span>
-                        </div>
-                        <p className="text-[11px] text-muted-foreground leading-snug">{crit.desc}</p>
-                      </div>
-                    ))}
-                  </div>
+                <div className="mb-6 p-4 rounded-xl bg-accent/5 border border-accent/20 text-sm leading-relaxed">
+                  {language === "ar"
+                    ? "أوزان تطوير الموضوع والإلقاء والمفردات واللغة: 60/10/20/10 لمسار 4 وحدات، و50/15/20/15 لمسار 5 وحدات. كل إجابة من 25 علامة؛ يتطلب قسم الفيديو إجابتين منفصلتين."
+                    : "Topic development / delivery / vocabulary / language weights: 60/10/20/10 for 4 units; 50/15/20/15 for 5 units. Each response is out of 25. The video section has two separate responses."}
                 </div>
 
                 {/* Teacher / Pedagogical Tip */}
