@@ -74,6 +74,10 @@ Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/c
 
 ## iHelp application links
 
+The sibling `AI-Proxy` Docker stack serves this landing site at
+**http://localhost:5181** and configures its links to the app at
+**http://localhost:5180**. Run `npm run local:up` from `AI-Proxy` to start both.
+
 Set `VITE_IHELP_APP_URL` to the separate iHelp browser deployment before building
 or deploying this site. Student signup and teacher login use that URL; school
 membership is established by account invitations, not the old demo class-code form.

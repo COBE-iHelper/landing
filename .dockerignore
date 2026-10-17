@@ -1,0 +1,17 @@
+**
+!package.json
+!package-lock.json
+!src
+!src/**
+!public
+!public/**
+!index.html
+!vite.config.ts
+!tailwind.config.ts
+!postcss.config.js
+!tsconfig*.json
+!docker
+!docker/web.conf
+**/.env*
+**/.local
+**/.data
