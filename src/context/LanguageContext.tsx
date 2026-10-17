@@ -103,6 +103,23 @@ export const translations: Record<Language, Record<string, string>> = {
     "calc.budgetSaved": "Estimated Budget / Value Saved",
     "calc.shekel": "ILS",
 
+    // Suite
+    "suite.badge": "SKILLUP ECOSYSTEM",
+    "suite.title": "Explore the Full SkillUp Educational Suite",
+    "suite.desc": "Specialized AI platforms built for Israeli students, matriculation candidates, and higher education applicants.",
+    "suite.cobeTitle": "SkillUp COBE (iHelp)",
+    "suite.cobeSub": "Spoken Bagrut English",
+    "suite.cobeDesc": "High school 4 & 5-point Computerized Oral Bagrut Exam practice with real-time AI examiners.",
+    "suite.cobeBtn": "Launch COBE Portal",
+    "suite.engTitle": "SkillUp Eng (AmirNet)",
+    "suite.engSub": "Academic & Psychometric English",
+    "suite.engDesc": "121 full AmirNet simulations, 2,000+ vocabulary flashcards, and university exemption tools.",
+    "suite.engBtn": "Launch AmirNet",
+    "suite.hebTitle": "SkillUp Heb (YaelNet)",
+    "suite.hebSub": "Hebrew Academic Proficiency",
+    "suite.hebDesc": "Full preparation and simulations for the NITE YAEL / YAELNET Hebrew proficiency exam.",
+    "suite.hebBtn": "Launch YaelNet",
+
     // Contact & Footer
     "contact.badge": "GET IN TOUCH",
     "contact.title": "Bring SkillUp iHelp to Your School",
@@ -204,6 +221,23 @@ export const translations: Record<Language, Record<string, string>> = {
     "calc.hoursSaved": "ساعات العمل الموفرة للمعلمين",
     "calc.budgetSaved": "القيمة المالية التقديرية الموفرة",
     "calc.shekel": "شيكل",
+
+    // Suite
+    "suite.badge": "منظومة SKILLUP التعليمية",
+    "suite.title": "استكشف باقة منصات SkillUp التعليمية الكاملة",
+    "suite.desc": "منصات ذكية متخصصة صُممت للطلاب ومتقدمي امتحانات البجروت والقبول الأكاديمي والجامعي.",
+    "suite.cobeTitle": "SkillUp COBE (iHelp)",
+    "suite.cobeSub": "البجروت الشفوي بالإنجليزية",
+    "suite.cobeDesc": "تدريب واقعي ومحاكاة لامتحان البجروت المحوسب الشفوي 4 و5 وحدات مع تقييم فوري بالذكاء الاصطناعي.",
+    "suite.cobeBtn": "فتح بوابة COBE",
+    "suite.engTitle": "SkillUp Eng (أمير نت)",
+    "suite.engSub": "الإنجليزية الأكاديمية والبسيخومتري",
+    "suite.engDesc": "121 امتحاناً كاملاً، أكثر من 2,000 بطاقة ذكية للكلمات، وحاسبة الإعفاء الجامعي (פטור).",
+    "suite.engBtn": "فتح أمير نت",
+    "suite.hebTitle": "SkillUp Heb (ياعيل نت)",
+    "suite.hebSub": "إتقان اللغة العبرية الأكاديمية",
+    "suite.hebDesc": "تحضير شامل ومحاكاة دقيقة لامتحانات ياعيل وياعيل نت التابعة للمركز القطري للامتحانات والتقييم.",
+    "suite.hebBtn": "فتح ياعيل نت",
 
     // Contact & Footer
     "contact.badge": "تواصل معنا",

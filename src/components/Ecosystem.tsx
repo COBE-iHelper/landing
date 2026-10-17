@@ -1,9 +1,11 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, GraduationCap, BookOpen, Languages, ExternalLink } from "lucide-react";
 import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
 import { useLanguage } from "@/context/LanguageContext";
+import { cobeLink, amirnetLink, yaelLink } from "@/lib/app-link";
 
 const Ecosystem = () => {
   const { t } = useLanguage();
@@ -202,6 +204,110 @@ const Ecosystem = () => {
                 {t("eco.step4Desc")}
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* SkillUp Ecosystem Suite Cards (COBE, Eng, Heb) */}
+        <div className="mt-16 pt-16 border-t border-border">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-primary/15 text-primary border-primary/30 text-xs px-3 py-1 font-semibold">
+              {t("suite.badge")}
+            </Badge>
+            <h3 className="text-2xl md:text-4xl font-black text-foreground mb-3 tracking-tight">
+              {t("suite.title")}
+            </h3>
+            <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
+              {t("suite.desc")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* 1. SkillUp COBE (iHelp) */}
+            <Card className="p-6 border-border/80 bg-card hover:border-accent transition-all flex flex-col justify-between group shadow-sm hover:shadow-md">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center text-accent border border-accent/20">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <Badge variant="outline" className="text-[11px] font-semibold border-accent/40 text-accent">
+                    cobe.skillup-edu.org
+                  </Badge>
+                </div>
+                <h4 className="text-lg font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
+                  {t("suite.cobeTitle")}
+                </h4>
+                <p className="text-xs text-accent font-semibold mb-3">
+                  {t("suite.cobeSub")}
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-6">
+                  {t("suite.cobeDesc")}
+                </p>
+              </div>
+              <Button asChild size="sm" variant="outline" className="w-full gap-1.5 border-accent/30 hover:bg-accent/10 hover:border-accent text-foreground">
+                <a href={cobeLink()} target="_blank" rel="noopener noreferrer">
+                  <span>{t("suite.cobeBtn")}</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </Button>
+            </Card>
+
+            {/* 2. SkillUp Eng (AmirNet) */}
+            <Card className="p-6 border-border/80 bg-card hover:border-primary transition-all flex flex-col justify-between group shadow-sm hover:shadow-md">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center text-primary border border-primary/20">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                  <Badge variant="outline" className="text-[11px] font-semibold border-primary/40 text-primary">
+                    amirnet.skillup-edu.org
+                  </Badge>
+                </div>
+                <h4 className="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                  {t("suite.engTitle")}
+                </h4>
+                <p className="text-xs text-primary font-semibold mb-3">
+                  {t("suite.engSub")}
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-6">
+                  {t("suite.engDesc")}
+                </p>
+              </div>
+              <Button asChild size="sm" variant="outline" className="w-full gap-1.5 border-primary/30 hover:bg-primary/10 hover:border-primary text-foreground">
+                <a href={amirnetLink()} target="_blank" rel="noopener noreferrer">
+                  <span>{t("suite.engBtn")}</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </Button>
+            </Card>
+
+            {/* 3. SkillUp Heb (YaelNet) */}
+            <Card className="p-6 border-border/80 bg-card hover:border-blue-500 transition-all flex flex-col justify-between group shadow-sm hover:shadow-md">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-500 border border-blue-500/20">
+                    <Languages className="w-5 h-5" />
+                  </div>
+                  <Badge variant="outline" className="text-[11px] font-semibold border-blue-500/40 text-blue-500">
+                    yael.skillup-edu.org
+                  </Badge>
+                </div>
+                <h4 className="text-lg font-bold text-foreground mb-1 group-hover:text-blue-500 transition-colors">
+                  {t("suite.hebTitle")}
+                </h4>
+                <p className="text-xs text-blue-500 font-semibold mb-3">
+                  {t("suite.hebSub")}
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-6">
+                  {t("suite.hebDesc")}
+                </p>
+              </div>
+              <Button asChild size="sm" variant="outline" className="w-full gap-1.5 border-blue-500/30 hover:bg-blue-500/10 hover:border-blue-500 text-foreground">
+                <a href={yaelLink()} target="_blank" rel="noopener noreferrer">
+                  <span>{t("suite.hebBtn")}</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </Button>
+            </Card>
           </div>
         </div>
       </div>
