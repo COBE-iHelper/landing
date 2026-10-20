@@ -107,8 +107,11 @@ const ExamCatalog = () => {
   const parts = language === "ar" ? bagrutPartsAr : bagrutPartsEn;
 
   return (
-    <section id="curriculum" className="py-24 px-4 bg-muted/40 relative">
-      <div className="container mx-auto max-w-6xl">
+    <section id="curriculum" className="py-24 px-4 bg-muted/40 relative overflow-hidden">
+      {/* Ambient background glow effect */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] bg-accent/5 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge className="mb-4 bg-accent/15 text-accent border-accent/30 text-xs px-3 py-1 font-semibold">
@@ -130,10 +133,10 @@ const ExamCatalog = () => {
           className="w-full max-w-4xl mx-auto"
         >
           <div className="flex justify-center mb-8">
-            <TabsList className="grid grid-cols-3 h-auto p-1.5 bg-card border border-border rounded-2xl shadow-sm">
+            <TabsList className="grid grid-cols-3 h-auto p-1.5 bg-card border border-border/80 rounded-2xl shadow-sm">
               <TabsTrigger
                 value="part-a"
-                className="py-2.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground"
+                className="py-2.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=active]:shadow-glow transition-all"
               >
                 <UserCheck className="w-4 h-4" />
                 {language === "ar" ? "القسم أ: المقابلة" : "Part A: Interview"}
@@ -141,7 +144,7 @@ const ExamCatalog = () => {
 
               <TabsTrigger
                 value="part-b"
-                className="py-2.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground"
+                className="py-2.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=active]:shadow-glow transition-all"
               >
                 <FileText className="w-4 h-4" />
                 {language === "ar" ? "القسم ب: المشروع" : "Part B: Project"}
@@ -149,7 +152,7 @@ const ExamCatalog = () => {
 
               <TabsTrigger
                 value="part-c"
-                className="py-2.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground"
+                className="py-2.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=active]:shadow-glow transition-all"
               >
                 <Video className="w-4 h-4" />
                 {language === "ar" ? "القسم ج: الفيديو" : "Part C: Video Clip"}
@@ -159,7 +162,7 @@ const ExamCatalog = () => {
 
           {parts.map((item) => (
             <TabsContent key={item.id} value={item.id} className="space-y-6">
-              <Card className="p-6 md:p-8 border-border bg-card shadow-elegant">
+              <Card className="p-6 md:p-8 border-border/80 bg-card/95 backdrop-blur-sm shadow-elegant hover:shadow-glow hover:border-accent/30 transition-all duration-300 rounded-3xl">
                 {/* Header of the part */}
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-border">
                   <div>

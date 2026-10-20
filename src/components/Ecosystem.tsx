@@ -29,8 +29,8 @@ const Ecosystem = () => {
         {/* 2-Pillar Grid: Student AI vs Teacher Portal */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Pillar 1: Student Spoken AI Experience */}
-          <Card className="p-8 border-border/80 bg-card shadow-elegant hover:border-accent/40 transition-all flex flex-col justify-between relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-accent/20 transition-all"></div>
+          <Card className="glow-card p-8 border-border/80 bg-card shadow-elegant hover:border-accent/50 hover:shadow-glow rounded-3xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-accent/15 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-accent/25 transition-all"></div>
 
             <div>
               <div className="flex items-center justify-between mb-6">
@@ -87,8 +87,8 @@ const Ecosystem = () => {
           </Card>
 
           {/* Pillar 2: Teacher & School Management Hub */}
-          <Card className="p-8 border-border/80 bg-card shadow-elegant hover:border-primary/40 transition-all flex flex-col justify-between relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-primary/20 transition-all"></div>
+          <Card className="glow-card p-8 border-border/80 bg-card shadow-elegant hover:border-primary/50 hover:shadow-glow rounded-3xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/15 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-primary/25 transition-all"></div>
 
             <div>
               <div className="flex items-center justify-between mb-6">
@@ -157,8 +157,8 @@ const Ecosystem = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-            <div className="p-4 rounded-xl bg-muted/60 border border-border/60 text-center relative">
-              <span className="w-8 h-8 rounded-full bg-accent text-accent-foreground font-black text-sm flex items-center justify-center mx-auto mb-3">
+            <div className="glow-card p-5 rounded-2xl bg-card border border-border/80 shadow-sm text-center relative hover:border-accent/50 hover:shadow-md transition-all duration-300">
+              <span className="w-8 h-8 rounded-full bg-accent text-accent-foreground font-black text-sm flex items-center justify-center mx-auto mb-3 shadow-glow">
                 1
               </span>
               <h4 className="font-bold text-foreground text-sm mb-1">
@@ -169,8 +169,8 @@ const Ecosystem = () => {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-muted/60 border border-border/60 text-center relative">
-              <span className="w-8 h-8 rounded-full bg-accent text-accent-foreground font-black text-sm flex items-center justify-center mx-auto mb-3">
+            <div className="glow-card p-5 rounded-2xl bg-card border border-border/80 shadow-sm text-center relative hover:border-accent/50 hover:shadow-md transition-all duration-300">
+              <span className="w-8 h-8 rounded-full bg-accent text-accent-foreground font-black text-sm flex items-center justify-center mx-auto mb-3 shadow-glow">
                 2
               </span>
               <h4 className="font-bold text-foreground text-sm mb-1">
@@ -181,8 +181,8 @@ const Ecosystem = () => {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-muted/60 border border-border/60 text-center relative">
-              <span className="w-8 h-8 rounded-full bg-primary text-primary-foreground font-black text-sm flex items-center justify-center mx-auto mb-3">
+            <div className="glow-card p-5 rounded-2xl bg-card border border-border/80 shadow-sm text-center relative hover:border-accent/50 hover:shadow-md transition-all duration-300">
+              <span className="w-8 h-8 rounded-full bg-primary text-primary-foreground font-black text-sm flex items-center justify-center mx-auto mb-3 shadow-glow">
                 3
               </span>
               <h4 className="font-bold text-foreground text-sm mb-1">
@@ -193,8 +193,8 @@ const Ecosystem = () => {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-muted/60 border border-border/60 text-center relative">
-              <span className="w-8 h-8 rounded-full bg-primary text-primary-foreground font-black text-sm flex items-center justify-center mx-auto mb-3">
+            <div className="glow-card p-5 rounded-2xl bg-card border border-border/80 shadow-sm text-center relative hover:border-accent/50 hover:shadow-md transition-all duration-300">
+              <span className="w-8 h-8 rounded-full bg-primary text-primary-foreground font-black text-sm flex items-center justify-center mx-auto mb-3 shadow-glow">
                 4
               </span>
               <h4 className="font-bold text-foreground text-sm mb-1">
@@ -223,7 +223,7 @@ const Ecosystem = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 1. SkillUp COBE (iHelp) */}
-            <Card className="p-6 border-border/80 bg-card hover:border-accent transition-all flex flex-col justify-between group shadow-sm hover:shadow-md">
+            <Card className="glow-card p-6 border-border/80 bg-card rounded-2xl hover:border-accent/60 transition-all flex flex-col justify-between group shadow-sm hover:shadow-glow">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center text-accent border border-accent/20">
@@ -252,7 +252,7 @@ const Ecosystem = () => {
             </Card>
 
             {/* 2. SkillUp Eng (AmirNet) */}
-            <Card className="p-6 border-border/80 bg-card hover:border-primary transition-all flex flex-col justify-between group shadow-sm hover:shadow-md">
+            <Card className="glow-card p-6 border-border/80 bg-card rounded-2xl hover:border-primary/60 transition-all flex flex-col justify-between group shadow-sm hover:shadow-glow">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center text-primary border border-primary/20">
@@ -281,7 +281,7 @@ const Ecosystem = () => {
             </Card>
 
             {/* 3. SkillUp Heb (YaelNet) */}
-            <Card className="p-6 border-border/80 bg-card hover:border-blue-500 transition-all flex flex-col justify-between group shadow-sm hover:shadow-md">
+            <Card className="glow-card p-6 border-border/80 bg-card rounded-2xl hover:border-blue-500/60 transition-all flex flex-col justify-between group shadow-sm hover:shadow-glow">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-500 border border-blue-500/20">

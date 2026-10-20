@@ -88,5 +88,5 @@ requires routing to be configured by the host. For local development, set
 The marketing page links to the real authenticated teacher portal. The old
 fabricated classroom dashboard, class-code join and Ministry-sync demo are retired.
 For the contact form, configure a public `VITE_CONTACT_FORM_URL` endpoint that
-accepts `{name,email,organization,message}` JSON. Keep delivery/webhook credentials
+accepts `{name,email,organization,message}` JSON. Keep backend delivery credentials
 on that endpoint's server. Without it, visitors can use the displayed email link.

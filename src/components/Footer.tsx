@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/context/LanguageContext";
+import { ShieldCheck } from "lucide-react";
 
 const Footer = () => {
   const { language, t } = useLanguage();
@@ -36,7 +38,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-wrap justify-center gap-8 text-sm font-medium text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-6 text-sm font-medium text-muted-foreground">
             <a href="#features" className="hover:text-foreground transition-colors">
               {t("nav.why")}
             </a>
@@ -52,11 +54,46 @@ const Footer = () => {
             <a href="#faq" className="hover:text-foreground transition-colors">
               {t("nav.faq")}
             </a>
+            <Link to="/privacy" className="hover:text-foreground transition-colors font-semibold">
+              {t("footer.privacy")}
+            </Link>
+            <Link to="/terms" className="hover:text-foreground transition-colors font-semibold">
+              {t("footer.terms")}
+            </Link>
+            <Link to="/accessibility" className="hover:text-foreground transition-colors font-semibold">
+              {t("footer.accessibility")}
+            </Link>
+          </div>
+        </div>
+
+        {/* Security & Regulatory Compliance Row */}
+        <div className="py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground border-b border-border/50">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
+            <Badge variant="outline" className="text-[11px] text-accent border-accent/40 bg-accent/5 flex items-center gap-1.5 py-0.5">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              {t("footer.moeBadge")}
+            </Badge>
+            <Badge variant="outline" className="text-[11px] text-muted-foreground border-border py-0.5">
+              {t("footer.zdrBadge")}
+            </Badge>
+          </div>
+          <div className="flex items-center gap-3">
+            <Link to="/privacy" className="hover:text-foreground underline transition-colors">
+              {t("footer.privacy")}
+            </Link>
+            <span>•</span>
+            <Link to="/terms" className="hover:text-foreground underline transition-colors">
+              {t("footer.terms")}
+            </Link>
+            <span>•</span>
+            <Link to="/accessibility" className="hover:text-foreground underline transition-colors">
+              {t("footer.accessibility")}
+            </Link>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>
             &copy; {new Date().getFullYear()} {t("footer.rights")}
           </p>
@@ -74,3 +111,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

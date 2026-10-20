@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { Clock, DollarSign, Users, HandCoins } from "lucide-react";
+import { Clock, Users, HandCoins } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const SavingsCalculator = () => {
@@ -21,6 +21,9 @@ const SavingsCalculator = () => {
   const costPerHour = 80;
   const totalMoneySaved = totalHoursSaved * costPerHour;
 
+  const studentUnit = language === "ar" ? "طالب" : language === "he" ? "תלמידים" : "students";
+  const examUnit = language === "ar" ? "امتحانات" : language === "he" ? "מבחנים" : "exams";
+
   return (
     <section id="calculator" className="py-24 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
@@ -38,7 +41,7 @@ const SavingsCalculator = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Input Section */}
-          <Card className="p-8 shadow-elegant border-border bg-card">
+          <Card className="glow-card p-8 rounded-3xl shadow-elegant border-border/80 bg-card hover:border-accent/40 transition-all">
             <h3 className="text-2xl font-bold mb-8 text-foreground">
               {t("calc.institution")}
             </h3>
@@ -66,9 +69,9 @@ const SavingsCalculator = () => {
                   className="py-4"
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>10 {language === "ar" ? "طلاب" : "students"}</span>
-                  <span>200 {language === "ar" ? "طالب" : "students"}</span>
-                  <span>400 {language === "ar" ? "طالب" : "students"}</span>
+                  <span>10 {studentUnit}</span>
+                  <span>200 {studentUnit}</span>
+                  <span>400 {studentUnit}</span>
                 </div>
               </div>
 
@@ -94,19 +97,23 @@ const SavingsCalculator = () => {
                   className="py-4"
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>1 {language === "ar" ? "اختبار" : "exam"}</span>
-                  <span>3 {language === "ar" ? "اختبارات" : "exams"}</span>
-                  <span>6 {language === "ar" ? "اختبارات" : "exams"}</span>
+                  <span>1 {language === "ar" ? "امتحان" : language === "he" ? "מבחן" : "exam"}</span>
+                  <span>3 {examUnit}</span>
+                  <span>6 {examUnit}</span>
                 </div>
               </div>
             </div>
           </Card>
 
           {/* Results Section */}
-          <Card className="p-8 shadow-elegant border-border bg-gradient-to-br from-card to-muted flex flex-col justify-between">
+          <Card className="glow-card p-8 rounded-3xl shadow-elegant border border-accent/20 bg-gradient-to-br from-card via-card to-accent/5 hover:border-accent/50 hover:shadow-glow transition-all flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-bold mb-8 text-foreground">
-                {language === "ar" ? "العائد السنوي المتوقع لمدرستك" : "Projected Annual Return"}
+                {language === "ar"
+                  ? "العائد السنوي المتوقع لمدرستك"
+                  : language === "he"
+                  ? "החיסכון השנתי המשוער לבית הספר"
+                  : "Projected Annual Return"}
               </h3>
 
               <div className="space-y-6">
@@ -123,12 +130,14 @@ const SavingsCalculator = () => {
                       {totalHoursSaved}
                     </span>
                     <span className="text-sm text-muted-foreground font-semibold">
-                      {language === "ar" ? "ساعة تدريس موفرة" : "hours / year"}
+                      {language === "ar" ? "ساعة تدريس موفرة" : language === "he" ? "שעות הוראה שנחסכו" : "hours / year"}
                     </span>
                   </div>
                   <p className="text-xs text-emerald-600 font-medium mt-1">
                     {language === "ar"
                       ? "ما يعادل قرابة 4 أسابيع عمل كاملة للمركزين"
+                      : language === "he"
+                      ? "שווה ערך לכ-4 שבועות עבודה מלאים של צוות ההוראה"
                       : "Equivalent to ~4 full work weeks for English faculty"}
                   </p>
                 </div>
@@ -152,6 +161,8 @@ const SavingsCalculator = () => {
                   <p className="text-xs text-muted-foreground mt-1">
                     {language === "ar"
                       ? "محسوبة بتكلفة ساعات تدريس وفحص معتمدة"
+                      : language === "he"
+                      ? "מחושב לפי תעריף שעות בדיקה והוראה סטנדרטיות"
                       : "Based on standard departmental instructor evaluation hours"}
                   </p>
                 </div>
@@ -160,7 +171,11 @@ const SavingsCalculator = () => {
 
             <div className="pt-6 border-t border-border mt-6 text-center">
               <a href="#contact" className="text-sm font-bold text-accent hover:underline">
-                {language === "ar" ? "احجز تجربة مخصصة لمدرستك الآن ←" : "Schedule a tailored school consultation →"}
+                {language === "ar"
+                  ? "احجز تجربة مخصصة لمدرستك الآن ←"
+                  : language === "he"
+                  ? "תאם פיילוט מותאם לבית הספר שלך ←"
+                  : "Schedule a tailored school consultation →"}
               </a>
             </div>
           </Card>

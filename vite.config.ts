@@ -8,6 +8,9 @@ export default defineConfig({
   server: {
     host: "::",
     port: 5182,
+    proxy: {
+      '/api': { target: process.env.IHELP_API_URL || 'http://127.0.0.1:3001', changeOrigin: false },
+    },
   },
   plugins: [react(), tailwindcss()],
   resolve: {

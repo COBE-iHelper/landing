@@ -15,7 +15,7 @@ const featuresEn = [
     icon: Bot,
     title: "AI-Powered Spoken Examiner",
     description:
-      "Simulate real Bagrut oral exam conditions. The AI examiner asks official question prompts, manages timers, and creates an authentic test environment without student anxiety.",
+      "Simulate real Bagrut oral exam conditions. The AI examiner asks standardized question prompts, manages timers, and creates an authentic test environment without student anxiety.",
     badge: "Voice AI Engine",
   },
   {
@@ -23,7 +23,7 @@ const featuresEn = [
     title: "Rubric Grades & Progress",
     description:
       "Receive grades for topic development, delivery, vocabulary and language. Detailed feedback is included for paid and school accounts.",
-    badge: "Official MoE Rubric",
+    badge: "Standard MoE Rubric",
   },
   {
     icon: School,
@@ -36,7 +36,7 @@ const featuresEn = [
     icon: GraduationCap,
     title: "4 & 5 Points Complete Syllabus",
     description:
-      "Comprehensive coverage of the Ministry of Education oral curriculum. Practice official Part A personal interviews, Part B project presentations, and Part C video clip responses.",
+      "Comprehensive coverage of the Ministry of Education oral curriculum. Practice standardized Part A personal interviews, Part B project presentations, and Part C video clip responses.",
     badge: "Full Curriculum",
   },
   {
@@ -60,7 +60,7 @@ const featuresAr = [
     icon: Bot,
     title: "ممتحن شفهي ذكي بالصوت",
     description:
-      "محاكاة دقيقة لظروف امتحان البجروت الشفوي الحقيقي. يطرح الممتحن الذكي الأسئلة الرسمية ويدير المؤقت، مما يزيل حاجز الخوف والتوتر لدى الطالب.",
+      "محاكاة دقيقة لظروف امتحان البجروت الشفوي الحقيقي. يطرح الممتحن الذكي الأسئلة النموذجية ويدير المؤقت، مما يزيل حاجز الخوف والتوتر لدى الطالب.",
     badge: "محرك الصوت الذكي",
   },
   {
@@ -68,7 +68,7 @@ const featuresAr = [
     title: "علامات وتقدم وفق المعايير",
     description:
       "علامات في تطوير الموضوع والإلقاء والمفردات واللغة، مع ملاحظات مفصلة للحسابات المدفوعة والمدرسية.",
-    badge: "معايير الوزارة الرسمية",
+    badge: "معايير وزارة التربية",
   },
   {
     icon: School,
@@ -100,9 +100,54 @@ const featuresAr = [
   },
 ];
 
+const featuresHe = [
+  {
+    icon: Bot,
+    title: "בוחן שפתי מבוסס בינה מלאכותית",
+    description:
+      "סימולציה אותנטית של תנאי בחינת הבגרות בעל פה. בוחן ה-AI שואל שאלות ממחוון הבגרות, מנהל זמנים ומסיר את חרדת המבחן של התלמיד.",
+    badge: "מנוע קולי מתקדם",
+  },
+  {
+    icon: BarChart3,
+    title: "ציונים ומשוב לפי מחוון הבגרות",
+    description:
+      "ציונים מדויקים לפיתוח נושא, שטף ומסירה, אוצר מילים ומבנה דקדוקי. משוב מפורט כלול למנויים ובתי ספר.",
+    badge: "מחוון משרד החינוך",
+  },
+  {
+    icon: School,
+    title: "הזמנות אישיות לבית הספר",
+    description:
+      "מורים פותחים כיתות ומזמינים תלמידים ישירות במייל. לכל תלמיד חשבון אישי, היסטוריית בחינות והקלטות פרטיות.",
+    badge: "דשבורד מורים",
+  },
+  {
+    icon: GraduationCap,
+    title: "כיסוי מלא ל-4 ו-5 יח״ל",
+    description:
+      "תרגול מלא של כל חלקי הבגרות בעל פה: חלק א' (ראיון אישי), חלק ב' (הצגת פרויקט), וחלק ג' (ניתוח קטע וידאו).",
+    badge: "סילבוס מלא",
+  },
+  {
+    icon: Clock,
+    title: "ניתוח כיתתי מתקדם למורים",
+    description:
+      "מעקב אחר שיעורי השתתפות, מגמות ציונים, סקירת ניסיונות התלמידים וזיהוי תלמידים הזקוקים לתגבור.",
+    badge: "מעקב כיתתי",
+  },
+  {
+    icon: ShieldCheck,
+    title: "מאובטח, נגיש ופועל בדפדפן",
+    description:
+      "פועל באופן חלק בכל מחשב בית ספר, כרומבוק, טאבלט או סמארטפון ללא התקנת תוכנות כבדות או רכישת חומרה מיוחדת.",
+    badge: "ללא צורך בהתקנה",
+  },
+];
+
 const Features = () => {
   const { language, t } = useLanguage();
-  const features = language === "ar" ? featuresAr : featuresEn;
+  const features = language === "ar" ? featuresAr : language === "he" ? featuresHe : featuresEn;
 
   return (
     <section id="features" className="py-24 px-4 gradient-feature">
@@ -123,11 +168,11 @@ const Features = () => {
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="p-7 shadow-elegant hover:shadow-glow transition-all duration-300 hover:-translate-y-1 border-border/80 bg-card flex flex-col justify-between group"
+              className="glow-card p-7 shadow-elegant hover:shadow-glow transition-all duration-300 border-border/80 bg-card rounded-2xl hover:border-accent/50 flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-300">
                     <feature.icon className="w-6 h-6 text-accent" />
                   </div>
                   <Badge variant="secondary" className="text-[11px] font-medium">

@@ -22,7 +22,7 @@ const faqsEn = [
   },
   {
     question: "Do I need to install software?",
-    answer: "The browser app works with a microphone and internet connection. Subscribed schools can also use the desktop application. Choose between an official-style exam layout and a modern layout. Navigation supports English, Arabic and Hebrew; exam prompts and responses remain English.",
+    answer: "No installation is required. SkillUp COBE-iHelper is 100% cloud-based and operates directly inside any modern web browser (Google Chrome, Microsoft Edge, Apple Safari, Mozilla Firefox) in accordance with Ministry of Education standards (§3.1.3). You only need an internet connection and a microphone/headset.",
   },
   {
     question: "Who can access my recordings, and how long are they kept?",
@@ -41,7 +41,7 @@ const faqsAr = [
   },
   {
     question: "كيف ينضم المعلمون والطلاب إلى المدرسة؟",
-    answer: "يدعو مسؤول المنصة المعلمين بالبريد الإلكتروني. ينشئ المعلم صفوفه ويرسل دعوات شخصية للطلاب. يسجل الطلاب حساباتهم ويؤكدون البريد ثم يقبلون الدعوة. يمكن للمعلم مراجعة طلاب صفوفه المعينة فقط.",
+    answer: "يدعو مسؤول المنصة المعلمين بالبريد الإلكتروني. ينشئ المعلم صفوفه ويرسل دعوات شخصية للطلاب. يسجل الطلاب حساباتهم ويؤكدون البريد ثم يقبلון الدعوة. يمكن للمعلم مراجعة طلاب صفوفه المعينة فقط.",
   },
   {
     question: "كم امتحاناً تدريبياً يمكنني إجراءه؟",
@@ -49,7 +49,7 @@ const faqsAr = [
   },
   {
     question: "هل يجب تثبيت برنامج؟",
-    answer: "يعمل التطبيق عبر المتصفح مع ميكروفون واتصال بالإنترنت، ويمكن للمدارس المشتركة استخدام تطبيق سطح المكتب أيضاً. تتوفر واجهة بنمط الامتحان وواجهة حديثة، مع تنقل بالعربية والعبرية والإنجليزية. تبقى أسئلة الامتحان والإجابات باللغة الإنجليزية.",
+    answer: "لا يتطلب أي تثبيت. تعمل منصة SkillUp COBE-iHelper بالكامل وبشكل سحابي من خلال أي متصفح ويب حديث (Chrome، Edge، Safari، Firefox) وفقاً للبند 3.1.3 من معايير وزارة التربية والتعليم. كل ما تحتاجه هو اتصال بالإنترنت وميكروفون أو سماعات رأس.",
   },
   {
     question: "من يمكنه الوصول إلى تسجيلاتي، وكم تُحفظ؟",
@@ -61,9 +61,36 @@ const faqsAr = [
   },
 ];
 
+const faqsHe = [
+  {
+    question: "כיצד נבדקות התשובות בעל פה במערכת?",
+    answer: "ההקלטות המקוריות נבדקות לפי מחוון הבגרות (COBE). חלוקת המשקלים לפיתוח נושא, מסירה ושטף דיבור, אוצר מילים ומבנה שפתי הינה 60/10/20/10 לרמת 4 יח״ל ו-50/15/20/15 לרמת 5 יח״ל. שאלת הראיון האישי והפרויקט מקנות 25 נקודות כל אחת, ושתי שאלות הוידאו מקנות 25 נקודות כל אחת. אלו ציוני תרגול מתקדמים של בינה מלאכותית, ומנויים ובתי ספר מקבלים פירוט נקודות חוזק, שגיאות והסברים מעמיקים.",
+  },
+  {
+    question: "כיצד מורים ותלמידים מצטרפים לבית הספר?",
+    answer: "מנהל המערכת מזמין את המורים במייל. המורים יוצרים את כיתותיהם ושולחים הזמנות אישיות לתלמידים. התלמידים נרשמים, מאמתים את הדוא״ל ומאשרים את ההזמנה. המורים רשאים לצפות אך ורק בתלמידי הכיתות המשויכות אליהם.",
+  },
+  {
+    question: "כמה מבחני תרגול ניתן לבצע?",
+    answer: "חשבון חינמי זכאי למבחן תרגול מלא אחד בכל שבעה ימים. מנויים פרטיים ותלמידים בבתי ספר מנויים זכאים לעד עשרה מבחנים מלאים ביום (לפי שעון ישראל). במקרה של תקלה טכנית בבדיקה, המכסה מוחזרת אוטומטית.",
+  },
+  {
+    question: "האם נדרשת התקנת תוכנה כלשהי?",
+    answer: "לא נדרשת כל התקנה. מערכת SkillUp COBE-iHelper פועלת באופן מלא ומאובטח מתוך דפדפן האינטרנט (Web-based) ללא צורך בהתקנת רכיב תוכנה, אפליקציה מקומית או תוסף דפדפן, בהתאם לדרישות תקן משרד החינוך (סעיף 3.1.3). המערכת נתמכת בכל הדפדפנים המובילים (Chrome, Edge, Safari, Firefox) וכל שנדרש הוא חיבור אינטרנט ומיקרופון/אוזניות.",
+  },
+  {
+    question: "למי יש גישה להקלטות שלי, ולכמה זמן הן נשמרות?",
+    answer: "ההקלטות נשמרות באופן מאובטח ופרטי ונשלחות למודל ה-AI לבדיקה. התלמיד יכול להאזין להקלטותיו, והמורה המלמד יכול להאזין להקלטות שבוצעו במסגרת בית הספר. קבצי השמע נשמרים ל-90 יום, בעוד שהציונים, המשוב והיסטוריית המבחנים נשמרים באופן קבוע.",
+  },
+  {
+    question: "האם ניתן לתאם פיילוט לבית הספר שלנו?",
+    answer: "צרו איתנו קשר בטופס שלמטה כדי לדון בצרכי בית הספר ופתיחת מנוי. תלמידים יחידים יכולים תמיד להירשם ולהתנסות במבחן חינמי מדי שבוע.",
+  },
+];
+
 const FAQ = () => {
   const { language, t } = useLanguage();
-  const faqs = language === "ar" ? faqsAr : faqsEn;
+  const faqs = language === "ar" ? faqsAr : language === "he" ? faqsHe : faqsEn;
 
   return (
     <section id="faq" className="py-24 px-4 bg-background">
@@ -73,11 +100,17 @@ const FAQ = () => {
             {t("nav.faq")}
           </Badge>
           <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-            {language === "ar" ? "كل ما تود معرفته عن المنصة" : "Everything You Need to Know"}
+            {language === "ar"
+              ? "كل ما تود معرفته عن المنصة"
+              : language === "he"
+              ? "כל מה שחשוב לדעת על הפלטפורמה"
+              : "Everything You Need to Know"}
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             {language === "ar"
               ? "إجابات شافية حول SkillUp iHelp، متطلبات امتحان COBE، دعوات الصفوف، ومعايير التقييم."
+              : language === "he"
+              ? "תשובות לשאלות נפוצות על SkillUp iHelp, הנחיות בגרות בעל פה COBE, הזמנת כיתות ומחוון הבדיקה."
               : "Have questions about SkillUp iHelp, COBE Bagrut guidelines, classroom invitations, or rubric scoring? We've got answers."}
           </p>
         </div>

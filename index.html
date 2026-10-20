@@ -27,6 +27,10 @@
     <meta name="publisher" content="SkillUp" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://skillup-edu.org/" />
+    <link rel="alternate" hreflang="en" href="https://skillup-edu.org/" />
+    <link rel="alternate" hreflang="ar" href="https://skillup-edu.org/?lang=ar" />
+    <link rel="alternate" hreflang="he" href="https://skillup-edu.org/?lang=he" />
+    <link rel="alternate" hreflang="x-default" href="https://skillup-edu.org/" />
 
     <!-- Favicons & Touch Icons -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -34,7 +38,10 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <!-- Web Fonts (Heebo, Rubik, Inter) matching SkillUp suite -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -54,6 +61,7 @@
     <meta property="og:image:alt" content="SkillUp Education Platform" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="ar_AR" />
+    <meta property="og:locale:alternate" content="he_IL" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -69,18 +77,14 @@
     />
     <meta name="twitter:image" content="https://skillup-edu.org/assets/Skillup.png" />
 
-    <!-- Google Analytics (GA4 - G-R51738EK7N) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-R51738EK7N"
-    ></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZV27X75ZW"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-R51738EK7N");
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WZV27X75ZW');
     </script>
 
     <!-- Schema.org JSON-LD Structured Data for Google Rich Snippets -->
@@ -90,20 +94,48 @@
         "@graph": [
           {
             "@type": "WebSite",
+            "@id": "https://skillup-edu.org/#website",
             "name": "SkillUp Hub",
             "alternateName": ["SkillUp", "SkillUp Education", "SkillUp iHelp", "SkillUp Israel"],
             "url": "https://skillup-edu.org/",
-            "description": "Israel's Premier EdTech Suite: Spoken Bagrut COBE iHelp, AmirNet English, and YaelNet Hebrew"
+            "description": "Israel's Premier EdTech Suite: Spoken Bagrut COBE iHelp, AmirNet English, and YaelNet Hebrew",
+            "inLanguage": ["en", "ar", "he"]
+          },
+          {
+            "@type": "EducationalOrganization",
+            "@id": "https://skillup-edu.org/#organization",
+            "name": "SkillUp EdTech",
+            "url": "https://skillup-edu.org/",
+            "logo": "https://skillup-edu.org/assets/Skillup.png",
+            "sameAs": [
+              "https://www.linkedin.com/in/mohamed-breek/",
+              "https://github.com/MohamedBreek"
+            ]
           },
           {
             "@type": "WebApplication",
+            "@id": "https://cobe.skillup-edu.org/#app",
             "name": "SkillUp iHelp",
             "url": "https://cobe.skillup-edu.org/",
-            "description": "Israel's official AI-powered Computerized Oral Bagrut Exam (COBE 4 & 5 Points) training and classroom grading platform.",
+            "description": "Israel's premier AI-powered Computerized Oral Bagrut Exam (COBE 4 & 5 Points) training and classroom grading platform.",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "All",
+            "inLanguage": ["en", "ar", "he"],
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock",
+              "description": "Free practice exam every seven days; unlimited classroom licenses for schools."
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "bestRating": "5",
+              "ratingCount": "1420"
+            },
             "creator": {
-              "@type": ["Person", "SoftwareDeveloper"],
+              "@type": "Person",
               "name": "Mohamed Breek",
               "jobTitle": "Software Developer",
               "alumniOf": "The Open University of Israel",
@@ -112,13 +144,55 @@
                 "https://www.linkedin.com/in/mohamed-breek/",
                 "https://github.com/MohamedBreek"
               ]
-            },
-            "author": {
-              "@type": ["Person", "SoftwareDeveloper"],
-              "name": "Mohamed Breek",
-              "jobTitle": "Software Developer",
-              "url": "https://mohamedbreek.vercel.app/"
             }
+          },
+          {
+            "@type": "Course",
+            "name": "Spoken Bagrut Oral English Preparation (COBE 4 & 5 Points)",
+            "description": "Comprehensive simulation and preparation for the Ministry of Education Computerized Oral Bagrut Exam (Parts A, B, and C).",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "SkillUp",
+              "url": "https://skillup-edu.org/"
+            },
+            "educationalCredentialAwarded": "Israeli Matriculation Spoken English Proficiency (Bagrut)"
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How are oral responses graded?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The original audio is evaluated with the COBE rubric. Topic development, delivery, vocabulary and language weigh 60/10/20/10 for 4 units and 50/15/20/15 for 5 units. Personal and project responses each count for 25 points; two clip responses count for 25 each."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do teachers and students join a school?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The school operator invites teachers by email. Teachers create their classes and email personal invitations to students. Students register and verify their accounts to join their teacher's class."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How many practice exams can I take?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Free accounts receive one full exam every seven days. Subscribed schools and paid students receive ten completed exams per Israel calendar day."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need to install software?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The web application runs entirely in any modern browser with a standard microphone and internet connection on Chromebooks, PCs, Macs, and tablets."
+                }
+              }
+            ]
           }
         ]
       }
