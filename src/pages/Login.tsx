@@ -116,9 +116,10 @@ export default function LoginPage() {
         );
         setTimeout(() => handleRedirect(token), 600);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Google sign-in error:", err);
-      if (err.code === "auth/popup-closed-by-user") {
+      const authErr = err as { code?: string; message?: string };
+      if (authErr?.code === "auth/popup-closed-by-user") {
         setErrorMsg(
           language === "ar"
             ? "تم إغلاق نافذة تسجيل الدخول."
@@ -127,7 +128,7 @@ export default function LoginPage() {
             : "Sign-in popup was closed."
         );
       } else {
-        setErrorMsg(err.message || "Failed to authenticate with Google");
+        setErrorMsg(authErr?.message || "Failed to authenticate with Google");
       }
     } finally {
       setLoading(false);
@@ -188,12 +189,13 @@ export default function LoginPage() {
           : "Success! Launching your practice exam directly..."
       );
       setTimeout(() => handleRedirect(token), 600);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Email auth error:", err);
+      const authErr = err as { code?: string; message?: string };
       if (
-        err.code === "auth/invalid-credential" ||
-        err.code === "auth/user-not-found" ||
-        err.code === "auth/wrong-password"
+        authErr?.code === "auth/invalid-credential" ||
+        authErr?.code === "auth/user-not-found" ||
+        authErr?.code === "auth/wrong-password"
       ) {
         setErrorMsg(
           language === "ar"
@@ -203,7 +205,7 @@ export default function LoginPage() {
             : "Invalid account credentials. Please verify your email and password."
         );
       } else {
-        setErrorMsg(err.message || "Authentication error");
+        setErrorMsg(authErr?.message || "Authentication error");
       }
     } finally {
       setLoading(false);
