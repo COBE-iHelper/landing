@@ -62,6 +62,56 @@ export default function LoginPage() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
+  const syncUserToSessionToken = async (user: {
+    email: string | null;
+    displayName?: string | null;
+    photoURL?: string | null;
+  }): Promise<string | undefined> => {
+    if (!user.email) return undefined;
+    const body = JSON.stringify({
+      email: user.email,
+      name: user.displayName || user.email.split("@")[0],
+      image: user.photoURL || null,
+    });
+
+    const isLocal =
+      typeof window !== "undefined" &&
+      (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    const cobeBase = isLocal
+      ? "http://localhost:5173"
+      : import.meta.env.VITE_IHELP_APP_URL || "https://cobe.skillup-edu.org";
+    const proxyBase = isLocal
+      ? "http://localhost:3001"
+      : import.meta.env.VITE_AI_PROXY_URL || "https://ai-proxy-production.vercel.app";
+
+    const endpoints = [
+      "/api/auth/google",
+      `${cobeBase}/api/auth/google`,
+      `${proxyBase}/api/auth/google`,
+    ];
+
+    for (const endpoint of endpoints) {
+      try {
+        const authRes = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body,
+        });
+        if (authRes.ok) {
+          const text = await authRes.text();
+          const data = JSON.parse(text);
+          if (data?.token) {
+            return data.token as string;
+          }
+        }
+      } catch (err) {
+        console.warn(`Auth sync fallback tried ${endpoint}:`, err);
+      }
+    }
+    return undefined;
+  };
+
   // Seamless redirect: logs directly into the practice app with session so user doesn't sign in again
   const handleRedirect = (token?: string) => {
     const isLocal =
@@ -71,10 +121,10 @@ export default function LoginPage() {
       ? "http://localhost:5173"
       : import.meta.env.VITE_IHELP_APP_URL || "https://cobe.skillup-edu.org";
 
-    const nextParam = searchParams.get("next") || (isTeacher ? "/teacher" : undefined);
+    const nextParam = searchParams.get("next") || (isTeacher ? "/teacher" : "/");
     const params = new URLSearchParams();
     if (token) params.set("token", token);
-    if (nextParam) params.set("next", nextParam);
+    params.set("next", nextParam);
     if (roleParam) params.set("role", roleParam);
     const queryString = params.toString() ? `?${params.toString()}` : "";
     window.location.href = `${base}/login${queryString}`;
@@ -87,25 +137,7 @@ export default function LoginPage() {
     try {
       const res = await signInWithGoogle();
       if (res?.user) {
-        let token: string | undefined;
-        try {
-          const authRes = await fetch("/api/auth/google", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({
-              email: res.user.email,
-              name: res.user.displayName || res.user.email?.split("@")[0],
-              image: res.user.photoURL,
-            }),
-          });
-          if (authRes.ok) {
-            const data = await authRes.json();
-            token = data.token;
-          }
-        } catch (syncErr) {
-          console.error("Failed to sync google user to backend:", syncErr);
-        }
+        const token = await syncUserToSessionToken(res.user);
 
         setSuccessMsg(
           language === "ar"
@@ -114,7 +146,7 @@ export default function LoginPage() {
             ? "התחברת בהצלחה! מועבר ישירות למערכת..."
             : "Signed in successfully! Launching your portal..."
         );
-        setTimeout(() => handleRedirect(token), 600);
+        setTimeout(() => handleRedirect(token), 400);
       }
     } catch (err: unknown) {
       console.error("Google sign-in error:", err);
@@ -159,36 +191,18 @@ export default function LoginPage() {
       } else {
         res = await signInWithEmail(email, password);
       }
-      let token: string | undefined;
       if (res?.user) {
-        try {
-          const authRes = await fetch("/api/auth/google", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({
-              email: res.user.email,
-              name: res.user.displayName || res.user.email?.split("@")[0],
-              image: res.user.photoURL || null,
-            }),
-          });
-          if (authRes.ok) {
-            const data = await authRes.json();
-            token = data.token;
-          }
-        } catch (syncErr) {
-          console.error("Failed to sync email user to backend:", syncErr);
-        }
-      }
+        const token = await syncUserToSessionToken(res.user);
 
-      setSuccessMsg(
-        language === "ar"
-          ? "تم الدخول بنجاح! جارٍ توجيهك مباشرة للامتحان..."
-          : language === "he"
-          ? "התחברת בהצלחה! פותח את מבחן התרגול..."
-          : "Success! Launching your practice exam directly..."
-      );
-      setTimeout(() => handleRedirect(token), 600);
+        setSuccessMsg(
+          language === "ar"
+            ? "تم الدخول بنجاح! جارٍ توجيهك مباشرة..."
+            : language === "he"
+            ? "התחברת בהצלחה! פותח את המערכת..."
+            : "Success! Launching your portal..."
+        );
+        setTimeout(() => handleRedirect(token), 400);
+      }
     } catch (err: unknown) {
       console.error("Email auth error:", err);
       const authErr = err as { code?: string; message?: string };
