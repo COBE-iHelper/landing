@@ -79,7 +79,7 @@ export default function LoginPage() {
       (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
     const cobeBase = isLocal
       ? "http://localhost:5173"
-      : import.meta.env.VITE_IHELP_APP_URL || "https://cobe.skillup-edu.org";
+      : import.meta.env.VITE_IHELP_APP_URL || "https://ihelp.skillup-edu.org";
     const proxyBase = isLocal
       ? "http://localhost:3001"
       : import.meta.env.VITE_AI_PROXY_URL || "https://ai-proxy-sepia-nine.vercel.app";
@@ -138,7 +138,7 @@ export default function LoginPage() {
       ? "http://localhost:5173"
       : (configuredBase && configuredBase !== window.location.origin
           ? configuredBase
-          : "https://ihelp-mohamed1175s-projects.vercel.app");
+          : "https://ihelp.skillup-edu.org");
 
     const nextParam = searchParams.get("next") || (isTeacher ? "/teacher" : "/");
     const params = new URLSearchParams();
