@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://ai-proxy-production.vercel.app/api/:path*"
+      "destination": "https://ai-proxy-sepia-nine.vercel.app/api/:path*"
     },
     {
       "source": "/((?!api/).*)",
