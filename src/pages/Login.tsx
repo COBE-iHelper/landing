@@ -146,7 +146,7 @@ export default function LoginPage() {
     params.set("next", nextParam);
     if (roleParam) params.set("role", roleParam);
     const queryString = params.toString() ? `?${params.toString()}` : "";
-    window.location.href = `${base}/login${queryString}`;
+    window.location.replace(`${base}/login${queryString}`);
   };
 
   const handleGoogleSignIn = async () => {
@@ -165,7 +165,7 @@ export default function LoginPage() {
             ? "התחברת בהצלחה! מועבר ישירות למערכת..."
             : "Signed in successfully! Launching your portal..."
         );
-        setTimeout(() => handleRedirect(token), 400);
+        handleRedirect(token);
       }
     } catch (err: unknown) {
       console.error("Google sign-in error:", err);
@@ -220,7 +220,7 @@ export default function LoginPage() {
             ? "התחברת בהצלחה! פותח את המערכת..."
             : "Success! Launching your portal..."
         );
-        setTimeout(() => handleRedirect(token), 400);
+        handleRedirect(token);
       }
     } catch (err: unknown) {
       console.error("Email auth error:", err);
