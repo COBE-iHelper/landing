@@ -112,14 +112,33 @@ export default function LoginPage() {
     return undefined;
   };
 
+  // Auto-forward token if user arrived at landing with a token (e.g. from previous redirect loop)
+  useEffect(() => {
+    const existingToken = searchParams.get("token");
+    if (existingToken) {
+      setLoading(true);
+      setSuccessMsg(
+        language === "ar"
+          ? "تم التحقق من الحساب! جارٍ توجيهك إلى لوحة التحكم..."
+          : language === "he"
+          ? "החשבון אומת! מועבר ישירות ללוח הבקרה..."
+          : "Verified! Launching your dashboard..."
+      );
+      handleRedirect(existingToken);
+    }
+  }, [searchParams]);
+
   // Seamless redirect: logs directly into the practice app with session so user doesn't sign in again
   const handleRedirect = (token?: string) => {
     const isLocal =
       typeof window !== "undefined" &&
       (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    const configuredBase = import.meta.env.VITE_IHELP_APP_URL?.replace(/\/$/, "");
     const base = isLocal
       ? "http://localhost:5173"
-      : import.meta.env.VITE_IHELP_APP_URL || "https://cobe.skillup-edu.org";
+      : (configuredBase && configuredBase !== window.location.origin
+          ? configuredBase
+          : "https://ihelp-mohamed1175s-projects.vercel.app");
 
     const nextParam = searchParams.get("next") || (isTeacher ? "/teacher" : "/");
     const params = new URLSearchParams();
