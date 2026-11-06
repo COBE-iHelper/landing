@@ -623,10 +623,10 @@ const ContactForm = () => {
                           type="text"
                           placeholder={
                             language === "ar"
-                              ? "أدخل بريدك المشترك (مثال: mohamedbreek1175@gmail.com) أو الكود"
+                              ? "أدخل بريدك المشترك أو الكود"
                               : language === "he"
-                              ? "הזינו אימייל מנוי (למשל: mohamedbreek1175@gmail.com) או קוד"
-                              : "Enter VIP email (e.g. mohamedbreek1175@gmail.com) or code"
+                              ? "הזינו אימייל מנוי או קוד"
+                              : "Enter VIP email or code"
                           }
                           value={unlockEmail}
                           onChange={(e) => setUnlockEmail(e.target.value)}
