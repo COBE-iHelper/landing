@@ -14,7 +14,6 @@ import {
 import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
 import { useLanguage } from "@/context/LanguageContext";
-import ReviewerAccessCard from "./ReviewerAccessCard";
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -158,11 +157,6 @@ const Hero = () => {
                 {t("hero.watchDemo")}
               </a>
             </Button>
-          </div>
-
-          {/* Official Ministry of Education Reviewer Access Card */}
-          <div className="mb-12">
-            <ReviewerAccessCard />
           </div>
 
           {/* Real Bagrut Statistics & Highlights with glow-card hover effect */}

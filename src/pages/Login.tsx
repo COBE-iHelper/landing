@@ -17,19 +17,12 @@ import {
   Loader2,
   ChevronDown,
   LogIn,
-  School,
-  GraduationCap,
-  Copy,
-  Check,
-  ShieldCheck,
-  KeyRound,
 } from "lucide-react";
 import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
 import { useTheme } from "@/context/ThemeContext";
 import ThemeToggle from "@/components/ThemeToggle";
-import { MoeLoginButton, MoeOwlIcon } from "@/components/MoeLoginButton";
-import { TEACHER_REVIEWER, STUDENT_REVIEWER } from "@/components/ReviewerAccessCard";
+import { MoeLoginButton } from "@/components/MoeLoginButton";
 
 export default function LoginPage() {
   const { language, setLanguage, dir, t } = useLanguage();
@@ -60,12 +53,6 @@ export default function LoginPage() {
 
   const roleParam = searchParams.get("role");
   const isTeacher = roleParam === "teacher";
-  const autoParam = searchParams.get("auto") || searchParams.get("reviewer");
-  const [activeReviewerTab, setActiveReviewerTab] = useState<"teacher" | "student">(
-    isTeacher || autoParam === "teacher" ? "teacher" : "student"
-  );
-  const [copiedKey, setCopiedKey] = useState<string | null>(null);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(
@@ -74,65 +61,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
-
-  // Auto-fill reviewer credentials if requested via URL or query
-  useEffect(() => {
-    if (autoParam === "teacher") {
-      setActiveReviewerTab("teacher");
-      setEmail(TEACHER_REVIEWER.email);
-      setPassword(TEACHER_REVIEWER.password);
-    } else if (autoParam === "student") {
-      setActiveReviewerTab("student");
-      setEmail(STUDENT_REVIEWER.email);
-      setPassword(STUDENT_REVIEWER.password);
-    }
-  }, [autoParam]);
-
-  const handleCopy = (text: string, key: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedKey(key);
-    setTimeout(() => {
-      setCopiedKey((prev) => (prev === key ? null : prev));
-    }, 2000);
-  };
-
-  const handleFillReviewer = (targetRole: "teacher" | "student") => {
-    setActiveReviewerTab(targetRole);
-    const creds = targetRole === "teacher" ? TEACHER_REVIEWER : STUDENT_REVIEWER;
-    setEmail(creds.email);
-    setPassword(creds.password);
-  };
-
-  const handleReviewerQuickLogin = async (targetRole: "teacher" | "student") => {
-    setActiveReviewerTab(targetRole);
-    const creds = targetRole === "teacher" ? TEACHER_REVIEWER : STUDENT_REVIEWER;
-    setEmail(creds.email);
-    setPassword(creds.password);
-    setLoading(true);
-    setErrorMsg(null);
-    setSuccessMsg(null);
-
-    try {
-      const res = await signInWithEmail(creds.email, creds.password);
-      if (res?.user) {
-        const token = await syncUserToSessionToken(res.user);
-        setSuccessMsg(
-          language === "ar"
-            ? "تم الدخول بنجاح كمعرّف/مقيّم! جارٍ التحويل مباشرة..."
-            : language === "he"
-            ? "התחברת בהצלחה כמעריך/בוחן! מועבר ישירות למערכת..."
-            : "Logged in successfully as MoE Reviewer! Launching your portal..."
-        );
-        handleRedirect(token);
-      }
-    } catch (err: unknown) {
-      console.error("Reviewer quick sign-in error:", err);
-      const authErr = err as { code?: string; message?: string };
-      setErrorMsg(authErr?.message || "Failed to log in with reviewer account");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const syncUserToSessionToken = async (user: {
     email: string | null;
@@ -555,181 +483,6 @@ export default function LoginPage() {
                     {t("auth.orEmail")}
                   </span>
                 </div>
-              </div>
-
-              {/* MoE Official Reviewer Credentials Box */}
-              <div
-                className={`p-4 rounded-2xl border transition-all ${
-                  isDark
-                    ? "bg-[#090d16]/95 border-blue-500/30 shadow-lg"
-                    : "bg-blue-50/70 border-blue-200 shadow-sm"
-                }`}
-              >
-                <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <div className="flex items-center gap-2">
-                    <MoeOwlIcon size={20} />
-                    <span className="text-xs font-black tracking-tight">
-                      {t("reviewer.title")}
-                    </span>
-                  </div>
-                  <Badge
-                    variant="outline"
-                    className="text-[10px] font-bold px-2 py-0 border-blue-500/30 text-blue-600 dark:text-blue-400 bg-white dark:bg-[#131b2e]"
-                  >
-                    <ShieldCheck className="w-3 h-3 mr-1 rtl:mr-0 rtl:ml-1 inline" />
-                    MoE Review
-                  </Badge>
-                </div>
-
-                {/* Role Switcher Tabs */}
-                <div className="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-slate-200/70 dark:bg-slate-800/80 mb-3 text-xs font-bold">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setActiveReviewerTab("teacher");
-                      handleFillReviewer("teacher");
-                    }}
-                    className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-                      activeReviewerTab === "teacher"
-                        ? "bg-white dark:bg-[#131b2e] text-emerald-600 dark:text-emerald-400 shadow-xs"
-                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                    }`}
-                  >
-                    <School className="w-3.5 h-3.5" />
-                    <span>{t("reviewer.teacherTitle")}</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setActiveReviewerTab("student");
-                      handleFillReviewer("student");
-                    }}
-                    className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-                      activeReviewerTab === "student"
-                        ? "bg-white dark:bg-[#131b2e] text-blue-600 dark:text-blue-400 shadow-xs"
-                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                    }`}
-                  >
-                    <GraduationCap className="w-3.5 h-3.5" />
-                    <span>{t("reviewer.studentTitle")}</span>
-                  </button>
-                </div>
-
-                {/* Display Current Active Reviewer Credentials */}
-                {(() => {
-                  const currentCreds =
-                    activeReviewerTab === "teacher" ? TEACHER_REVIEWER : STUDENT_REVIEWER;
-                  const isTeacherActive = activeReviewerTab === "teacher";
-                  return (
-                    <div className="space-y-2 mb-3">
-                      <div
-                        className={`p-2 rounded-xl border flex items-center justify-between text-xs font-mono transition-colors ${
-                          isDark
-                            ? "bg-[#131b2e] border-slate-800 text-slate-200"
-                            : "bg-white border-slate-200 text-slate-800"
-                        }`}
-                      >
-                        <div className="flex items-center gap-1.5 truncate">
-                          <Mail
-                            className={`w-3.5 h-3.5 shrink-0 ${
-                              isTeacherActive ? "text-emerald-500" : "text-blue-500"
-                            }`}
-                          />
-                          <span className="truncate select-all">{currentCreds.email}</span>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => handleCopy(currentCreds.email, "login-email")}
-                          className="p-1 rounded-md text-[11px] font-sans font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 cursor-pointer shrink-0"
-                          title="Copy email"
-                        >
-                          {copiedKey === "login-email" ? (
-                            <>
-                              <Check className="w-3.5 h-3.5 text-emerald-500" />
-                              <span className="text-[10px] text-emerald-500 font-bold">{t("reviewer.copied")}</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-3.5 h-3.5" />
-                              <span className="text-[10px] hidden sm:inline">{t("reviewer.copyEmail")}</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
-
-                      <div
-                        className={`p-2 rounded-xl border flex items-center justify-between text-xs font-mono transition-colors ${
-                          isDark
-                            ? "bg-[#131b2e] border-slate-800 text-slate-200"
-                            : "bg-white border-slate-200 text-slate-800"
-                        }`}
-                      >
-                        <div className="flex items-center gap-1.5 truncate">
-                          <KeyRound
-                            className={`w-3.5 h-3.5 shrink-0 ${
-                              isTeacherActive ? "text-emerald-500" : "text-blue-500"
-                            }`}
-                          />
-                          <span className="font-bold select-all">{currentCreds.password}</span>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => handleCopy(currentCreds.password, "login-pass")}
-                          className="p-1 rounded-md text-[11px] font-sans font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 cursor-pointer shrink-0"
-                          title="Copy password"
-                        >
-                          {copiedKey === "login-pass" ? (
-                            <>
-                              <Check className="w-3.5 h-3.5 text-emerald-500" />
-                              <span className="text-[10px] text-emerald-500 font-bold">{t("reviewer.copied")}</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-3.5 h-3.5" />
-                              <span className="text-[10px] hidden sm:inline">{t("reviewer.copyPassword")}</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
-
-                      {/* Dual Action Buttons: Quick Fill or Instant Sign In */}
-                      <div className="grid grid-cols-2 gap-2 pt-1">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          disabled={loading}
-                          onClick={() => handleFillReviewer(activeReviewerTab)}
-                          className={`rounded-xl text-xs font-bold border transition-colors ${
-                            isDark
-                              ? "bg-[#131b2e] border-slate-700 hover:bg-slate-800 text-slate-200"
-                              : "bg-white border-slate-300 hover:bg-slate-50 text-slate-700"
-                          }`}
-                        >
-                          {t("reviewer.fillCredentials")}
-                        </Button>
-                        <Button
-                          type="button"
-                          size="sm"
-                          disabled={loading}
-                          onClick={() => handleReviewerQuickLogin(activeReviewerTab)}
-                          className={`rounded-xl text-xs font-bold text-white transition-all shadow-xs ${
-                            isTeacherActive
-                              ? "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-600/20"
-                              : "bg-blue-600 hover:bg-blue-500 shadow-blue-600/20"
-                          }`}
-                        >
-                          {loading ? (
-                            <Loader2 className="w-3.5 h-3.5 animate-spin mr-1 rtl:mr-0 rtl:ml-1" />
-                          ) : (
-                            <LogIn className="w-3.5 h-3.5 mr-1 rtl:mr-0 rtl:ml-1" />
-                          )}
-                          {t("reviewer.quickSignIn")}
-                        </Button>
-                      </div>
-                    </div>
-                  );
-                })()}
               </div>
 
               {/* Email + Password Form */}
