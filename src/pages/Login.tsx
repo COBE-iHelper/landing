@@ -157,6 +157,17 @@ export default function LoginPage() {
       const res = await signInWithGoogle();
       if (res?.user) {
         const token = await syncUserToSessionToken(res.user);
+        if (!token) {
+          setErrorMsg(
+            language === "ar"
+              ? "تعذر ربط جلسة الدخول بالسيرفر، يرجى المحاولة مرة أخرى."
+              : language === "he"
+              ? "שגיאה בסנכרון ההפעלה מול השרת, נא לנסות שוב."
+              : "Failed to establish server session. Please try again."
+          );
+          setLoading(false);
+          return;
+        }
 
         setSuccessMsg(
           language === "ar"
@@ -212,6 +223,17 @@ export default function LoginPage() {
       }
       if (res?.user) {
         const token = await syncUserToSessionToken(res.user);
+        if (!token) {
+          setErrorMsg(
+            language === "ar"
+              ? "تعذر ربط جلسة الدخول بالسيرفر، يرجى المحاولة مرة أخرى."
+              : language === "he"
+              ? "שגיאה בסנכרון ההפעלה מול השרת, נא לנסות שוב."
+              : "Failed to establish server session. Please try again."
+          );
+          setLoading(false);
+          return;
+        }
 
         setSuccessMsg(
           language === "ar"
