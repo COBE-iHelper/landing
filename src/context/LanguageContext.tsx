@@ -190,6 +190,33 @@ export const translations: Record<Language, Record<string, string>> = {
     "auth.studentNote":
       "High school students can simulate COBE Bagrut exams with live voice grading.",
     "auth.back": "Back to Home",
+
+    // Ministry of Education (MoE) Reviewer Access
+    "reviewer.badge": "MoE Reviewer Credentials",
+    "reviewer.title": "Ministry of Education (MoE) Reviewer Access",
+    "reviewer.subtitle":
+      "Official evaluation accounts for supervisors, evaluators and examiners to test both Teacher and Student environments.",
+    "reviewer.teacherTitle": "Teacher & Evaluator Dashboard",
+    "reviewer.teacherRole": "Role: Teacher",
+    "reviewer.teacherDesc":
+      "Access class management, student recordings, grading rubrics, and school analytics.",
+    "reviewer.studentTitle": "Student Oral Exam Simulation",
+    "reviewer.studentRole": "Role: Student",
+    "reviewer.studentDesc":
+      "Simulate the full Computerized Oral Bagrut Exam (COBE) with voice recording and AI grading.",
+    "reviewer.emailLabel": "Reviewer Email",
+    "reviewer.passwordLabel": "Password",
+    "reviewer.copyEmail": "Copy email",
+    "reviewer.copyPassword": "Copy password",
+    "reviewer.copied": "Copied!",
+    "reviewer.loginAsTeacher": "Login as Teacher Reviewer",
+    "reviewer.loginAsStudent": "Login as Student Reviewer",
+    "reviewer.fillCredentials": "Fill Credentials",
+    "reviewer.quickSignIn": "Quick Sign In",
+    "reviewer.switchTeacher": "Switch to Teacher Account",
+    "reviewer.switchStudent": "Switch to Student Account",
+    "reviewer.loginNotice":
+      "Ministry of Education reviewers can click below to prefill and log in instantly.",
   },
   ar: {
     // Top banner & Navbar
@@ -372,6 +399,33 @@ export const translations: Record<Language, Record<string, string>> = {
     "auth.studentNote":
       "يمكن للطلاب محاكاة امتحان البجروت بالصوت والحصول على تقييم فوري بالذكاء الاصطناعي.",
     "auth.back": "العودة للرئيسية",
+
+    // Ministry of Education (MoE) Reviewer Access
+    "reviewer.badge": "بيانات دخول رسمية للمقيّمين",
+    "reviewer.title": "دخول معرّفي ومقيّمي وزارة التربية والتعليم (MoE)",
+    "reviewer.subtitle":
+      "حسابات فحص وتقييم رسمية للمفتشين والمقيّمين والمعلمين لاختبار بيئة المعلم وتدريب الطلاب.",
+    "reviewer.teacherTitle": "بوابة المعلم والمقيّم",
+    "reviewer.teacherRole": "الدور: معلم (Teacher)",
+    "reviewer.teacherDesc":
+      "الوصول لإدارة الصفوف، الاستماع لتسجيلات الطلاب، مراجعة معايير التقييم والإحصائيات.",
+    "reviewer.studentTitle": "محاكاة امتحان البجروت الشفوي (طالب)",
+    "reviewer.studentRole": "الدور: طالب (Student)",
+    "reviewer.studentDesc":
+      "محاكاة كاملة لامتحان COBE المحوسب مع تسجيل الصوت والحصول على علامات الذكاء الاصطناعي.",
+    "reviewer.emailLabel": "بريد المقيّم",
+    "reviewer.passwordLabel": "كلمة المرور",
+    "reviewer.copyEmail": "نسخ البريد",
+    "reviewer.copyPassword": "نسخ كلمة المرور",
+    "reviewer.copied": "تم النسخ!",
+    "reviewer.loginAsTeacher": "دخول كمعلم مقيّم",
+    "reviewer.loginAsStudent": "دخول كطالب للاختبار",
+    "reviewer.fillCredentials": "تعبئة البيانات بالنموذج",
+    "reviewer.quickSignIn": "دخول سريع بنقرة واحدة",
+    "reviewer.switchTeacher": "التبديل إلى حساب المعلم",
+    "reviewer.switchStudent": "التبديل إلى حساب الطالب",
+    "reviewer.loginNotice":
+      "يمكن لمقيّمي وزارة التربية تعبئة بيانات الدخول أو تسجيل الدخول السريع بنقرة واحدة.",
   },
   he: {
     // Top banner & Navbar
@@ -551,6 +605,33 @@ export const translations: Record<Language, Record<string, string>> = {
     "auth.studentNote":
       "תלמידי תיכון מתרגלים הדמיה מלאה של בחינת הבגרות בדיבור ומקבלים הערכה מידית.",
     "auth.back": "חזרה לדף הבית",
+
+    // Ministry of Education (MoE) Reviewer Access
+    "reviewer.badge": "פרטי כניסה רשמיים למעריכים",
+    "reviewer.title": "כניסת בוחנים ומעריכי משרד החינוך (MoE Reviewers)",
+    "reviewer.subtitle":
+      "חשבונות בדיקה והערכה רשמיים למפקחים, מעריכים ובוחני בגרות לבדיקת פורטל המורים והדמיית התלמיד.",
+    "reviewer.teacherTitle": "פורטל מורה בוחן ומעריך",
+    "reviewer.teacherRole": "תפקיד: מורה (Teacher)",
+    "reviewer.teacherDesc":
+      "צפייה בדשבורד הכיתתי, האזנה להקלטות תלמידים, מחווני בדיקה וסטטיסטיקות בית ספריות.",
+    "reviewer.studentTitle": "הדמיית בגרות בעל פה (תלמיד)",
+    "reviewer.studentRole": "תפקיד: תלמיד (Student)",
+    "reviewer.studentDesc":
+      "הדמיה מלאה של בחינת ה-COBE המתוקשבת עם הקלטת תשובות וקבלת ציונים מבוססי AI.",
+    "reviewer.emailLabel": "דוא״ל מעריך",
+    "reviewer.passwordLabel": "סיסמה",
+    "reviewer.copyEmail": "העתק דוא״ל",
+    "reviewer.copyPassword": "העתק סיסמה",
+    "reviewer.copied": "הועתק!",
+    "reviewer.loginAsTeacher": "כניסה כמעריך מורה",
+    "reviewer.loginAsStudent": "כניסה כתלמיד נבחן",
+    "reviewer.fillCredentials": "הזן פרטים בטופס",
+    "reviewer.quickSignIn": "כניסה מהירה בלחיצה אחת",
+    "reviewer.switchTeacher": "מעבר לחשבון מורה מעריך",
+    "reviewer.switchStudent": "מעבר לחשבון תלמיד נבחן",
+    "reviewer.loginNotice":
+      "מעריכי ובוחני משרד החינוך יכולים להזין את פרטי ההתחברות או להיכנס בלחיצה אחת.",
   },
 };
 

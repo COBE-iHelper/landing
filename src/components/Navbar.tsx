@@ -12,6 +12,7 @@ import {
   Globe,
   ChevronDown,
   ArrowRight,
+  ShieldCheck,
 } from "lucide-react";
 import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
@@ -136,6 +137,13 @@ const Navbar = () => {
             className="whitespace-nowrap px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-[#131b2e] hover:text-blue-600 dark:hover:text-blue-400 transition-all"
           >
             {t("nav.faq")}
+          </a>
+          <a
+            href="#reviewer-access"
+            className="whitespace-nowrap px-3 py-1.5 rounded-xl bg-blue-50/70 hover:bg-blue-100 dark:bg-blue-950/40 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-bold transition-all flex items-center gap-1.5 border border-blue-500/30"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+            {language === "he" ? "כניסת מעריכים" : language === "ar" ? "دخول المقيّمين" : "MoE Reviewers"}
           </a>
         </nav>
 
@@ -320,6 +328,17 @@ const Navbar = () => {
             >
               <span>{t("nav.faq")}</span>
               <ArrowRight className={`w-4 h-4 text-slate-400 ${dir === "rtl" ? "rotate-180" : ""}`} />
+            </a>
+            <a
+              href="#reviewer-access"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-blue-600 dark:text-blue-400 font-bold py-2.5 px-3 rounded-xl bg-blue-50/60 dark:bg-blue-950/40 border border-blue-500/20 transition-colors flex items-center justify-between"
+            >
+              <span className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                {language === "he" ? "כניסת מעריכי משרד החינוך" : language === "ar" ? "دخول مقيّمي الوزارة" : "MoE Reviewer Access"}
+              </span>
+              <ArrowRight className={`w-4 h-4 text-blue-500 ${dir === "rtl" ? "rotate-180" : ""}`} />
             </a>
           </div>
 
