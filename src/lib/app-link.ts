@@ -3,7 +3,7 @@ export const getCobeBase = () => {
   if (typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")) {
     return "http://localhost:5173";
   }
-  return import.meta.env.VITE_IHELP_APP_URL?.replace(/\/$/, "") || "https://cobe.skillup-edu.org";
+  return import.meta.env.VITE_IHELP_APP_URL?.replace(/\/$/, "") || "https://ihelp.skillup-edu.org";
 };
 
 const engBase = import.meta.env.VITE_SKILLUP_ENG_URL?.replace(/\/$/, "") || "https://amirnet.skillup-edu.org";

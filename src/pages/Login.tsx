@@ -250,7 +250,7 @@ export default function LoginPage() {
           : import.meta.env.VITE_IHELP_APP_URL || "https://ihelp.skillup-edu.org";
         const proxyBase = isLocal
           ? "http://localhost:3001"
-          : import.meta.env.VITE_AI_PROXY_URL || "https://cobe.skillup-edu.org";
+          : import.meta.env.VITE_AI_PROXY_URL || "https://ai-proxy-sepia-nine.vercel.app";
 
         const endpoints = [
           "/api/auth/sign-in/email",
