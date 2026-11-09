@@ -23,11 +23,18 @@ import skillupLogo from "@/assets/skillup-logo.png";
 import { useTheme } from "@/context/ThemeContext";
 import ThemeToggle from "@/components/ThemeToggle";
 import { MoeLoginButton } from "@/components/MoeLoginButton";
+import { appLink } from "@/lib/app-link";
 
 export default function LoginPage() {
   const { language, setLanguage, dir, t } = useLanguage();
   const { theme } = useTheme();
   const [searchParams] = useSearchParams();
+
+  // Instantly forward to official iHelp login portal
+  useEffect(() => {
+    const dest = appLink(`/login${window.location.search}`);
+    window.location.replace(dest);
+  }, []);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const langDropdownRef = React.useRef<HTMLDivElement>(null);
 
@@ -55,9 +62,9 @@ export default function LoginPage() {
   const isTeacher = roleParam === "teacher";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignUp, setIsSignUp] = useState(
-    searchParams.get("signup") === "true" || searchParams.get("mode") === "signup"
-  );
+  // Account creation is hidden per request
+  const [isSignUp] = useState(false);
+  // Preserved original: searchParams.get("signup") === "true" || searchParams.get("mode") === "signup"
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
@@ -215,26 +222,64 @@ export default function LoginPage() {
     setSuccessMsg(null);
 
     try {
-      let res;
-      if (isSignUp) {
-        res = await signUpWithEmail(email, password);
-      } else {
-        res = await signInWithEmail(email, password);
-      }
-      if (res?.user) {
-        const token = await syncUserToSessionToken(res.user);
-        if (!token) {
-          setErrorMsg(
-            language === "ar"
-              ? "تعذر ربط جلسة الدخول بالسيرفر، يرجى المحاولة مرة أخرى."
-              : language === "he"
-              ? "שגיאה בסנכרון ההפעלה מול השרת, נא לנסות שוב."
-              : "Failed to establish server session. Please try again."
-          );
-          setLoading(false);
-          return;
-        }
+      const trimmedEmail = email.trim().toLowerCase();
+      let sessionToken: string | undefined;
 
+      // 1. Try Firebase Auth sign in
+      try {
+        let res;
+        if (isSignUp) {
+          res = await signUpWithEmail(trimmedEmail, password);
+        } else {
+          res = await signInWithEmail(trimmedEmail, password);
+        }
+        if (res?.user) {
+          sessionToken = await syncUserToSessionToken(res.user);
+        }
+      } catch (fbErr) {
+        console.warn("Firebase email auth attempt info:", fbErr);
+      }
+
+      // 2. If Firebase didn't produce a session token, try Better-Auth directly on the backend
+      if (!sessionToken) {
+        const isLocal =
+          typeof window !== "undefined" &&
+          (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+        const cobeBase = isLocal
+          ? "http://localhost:5173"
+          : import.meta.env.VITE_IHELP_APP_URL || "https://ihelp.skillup-edu.org";
+        const proxyBase = isLocal
+          ? "http://localhost:3001"
+          : import.meta.env.VITE_AI_PROXY_URL || "https://cobe.skillup-edu.org";
+
+        const endpoints = [
+          "/api/auth/sign-in/email",
+          `${cobeBase}/api/auth/sign-in/email`,
+          `${proxyBase}/api/auth/sign-in/email`,
+        ];
+
+        for (const ep of endpoints) {
+          try {
+            const resp = await fetch(ep, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: JSON.stringify({ email: trimmedEmail, password }),
+            });
+            if (resp.ok) {
+              const data = await resp.json().catch(() => ({}));
+              if (data?.token) {
+                sessionToken = data.token;
+                break;
+              }
+            }
+          } catch (e) {
+            console.warn(`Better-auth fallback tried ${ep}:`, e);
+          }
+        }
+      }
+
+      if (sessionToken) {
         setSuccessMsg(
           language === "ar"
             ? "تم الدخول بنجاح! جارٍ توجيهك مباشرة..."
@@ -242,26 +287,21 @@ export default function LoginPage() {
             ? "התחברת בהצלחה! פותח את המערכת..."
             : "Success! Launching your portal..."
         );
-        handleRedirect(token);
+        handleRedirect(sessionToken);
+        return;
       }
+
+      setErrorMsg(
+        language === "ar"
+          ? "بيانات الحساب غير صحيحة، يرجى التأكد من البريد الإلكتروني وكلمة المرور."
+          : language === "he"
+          ? "פרטי החשבון אינם נכונים, נא לוودא את כתובת האימייל והסיסמה."
+          : "Invalid account credentials. Please verify your email and password."
+      );
     } catch (err: unknown) {
       console.error("Email auth error:", err);
       const authErr = err as { code?: string; message?: string };
-      if (
-        authErr?.code === "auth/invalid-credential" ||
-        authErr?.code === "auth/user-not-found" ||
-        authErr?.code === "auth/wrong-password"
-      ) {
-        setErrorMsg(
-          language === "ar"
-            ? "بيانات الحساب غير صحيحة، يرجى التأكد من البريد الإلكتروني وكلمة المرور."
-            : language === "he"
-            ? "פרטי החשבון אינם נכונים, נא לוودא את כתובת האימייל והסיסמה."
-            : "Invalid account credentials. Please verify your email and password."
-        );
-      } else {
-        setErrorMsg(authErr?.message || "Authentication error");
-      }
+      setErrorMsg(authErr?.message || "Authentication error");
     } finally {
       setLoading(false);
     }
@@ -433,8 +473,8 @@ export default function LoginPage() {
               </div>
             )}
 
-            {/* Social / IDM Logins */}
-            <div className="space-y-3">
+            {/* Social / IDM Logins - Hidden per user request */}
+            <div className="space-y-3" style={{ display: "none" }}>
               <MoeLoginButton
                 variant="blue"
                 disabled={loading}
@@ -506,9 +546,10 @@ export default function LoginPage() {
                   </span>
                 </div>
               </div>
+            </div>
 
-              {/* Email + Password Form */}
-              <form onSubmit={handleEmailAuth} className="space-y-3.5">
+            {/* Email + Password Form - Visible */}
+            <form onSubmit={handleEmailAuth} className="space-y-3.5">
                 <div>
                   <label
                     className={`block text-xs font-medium mb-1.5 ${
@@ -591,7 +632,6 @@ export default function LoginPage() {
               >
                 {t("auth.note")}
               </div>
-            </div>
           </div>
         </div>
       </main>

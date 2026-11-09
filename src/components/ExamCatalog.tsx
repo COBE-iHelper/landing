@@ -175,7 +175,7 @@ const ExamCatalog = () => {
                     <p className="text-xs text-muted-foreground">{item.focus}</p>
                   </div>
 
-                  <a href={appLink("/signup")}>
+                  <a href={appLink("/login")}>
                     <Button variant="outline" size="sm" className="text-xs gap-1.5 border-accent/40 text-accent hover:bg-accent/10">
                       <GraduationCap className="w-3.5 h-3.5" />
                       {t("curriculum.getAccess")}

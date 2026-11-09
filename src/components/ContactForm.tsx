@@ -23,6 +23,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "@/hooks/use-toast";
+import { appLink } from "@/lib/app-link";
 import {
   Mail,
   Send,
@@ -579,7 +580,7 @@ const ContactForm = () => {
                   </Button>
 
                   <a
-                    href="/login?role=student&next=%23contact"
+                    href={appLink("/login?role=student")}
                     className="w-full sm:w-auto"
                   >
                     <Button
@@ -761,7 +762,7 @@ const ContactForm = () => {
                         ? "מועבר לשדרוג החשבון..."
                         : "Redirecting to VIP activation...",
                   });
-                  window.location.href = "/login?role=student&next=%23contact";
+                  window.location.href = appLink("/login?role=student");
                 }}
                 className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold"
               >

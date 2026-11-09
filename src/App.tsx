@@ -26,7 +26,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Navigate to="/login?signup=true" replace />} />
+              <Route path="/signup" element={<Navigate to="/login" replace />} />
               <Route path="/teacher" element={<Navigate to="/login?role=teacher" replace />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />

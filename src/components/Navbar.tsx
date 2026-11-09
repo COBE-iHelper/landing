@@ -17,6 +17,7 @@ import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
 import { useLanguage, type Language } from "@/context/LanguageContext";
 import ThemeToggle from "./ThemeToggle";
+import { appLink } from "@/lib/app-link";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -189,7 +190,7 @@ const Navbar = () => {
           <ThemeToggle />
 
           {/* Teacher Login Button */}
-          <Link to="/login?role=teacher" className="shrink-0">
+          <a href={appLink("/login?role=teacher")} className="shrink-0">
             <Button
               variant="outline"
               size="sm"
@@ -198,10 +199,10 @@ const Navbar = () => {
               <School className="w-4 h-4 mr-1.5 rtl:mr-0 rtl:ml-1.5 text-emerald-500" />
               {t("nav.teacherLogin")}
             </Button>
-          </Link>
+          </a>
 
           {/* Student Start / Practice Exam Button */}
-          <Link to="/login?role=student" className="shrink-0">
+          <a href={appLink("/login?role=student")} className="shrink-0">
             <Button
               size="sm"
               className="rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold shadow-sm shadow-blue-600/20 gap-1.5 transition-all hover:scale-[1.02] active:scale-98"
@@ -209,7 +210,7 @@ const Navbar = () => {
               <GraduationCap className="w-4 h-4" />
               {t("nav.getStarted")}
             </Button>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile controls & Menu toggle */}
@@ -325,7 +326,7 @@ const Navbar = () => {
 
           {/* Mobile Actions */}
           <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2.5">
-            <Link to="/login?role=teacher" onClick={() => setMobileMenuOpen(false)}>
+            <a href={appLink("/login?role=teacher")} onClick={() => setMobileMenuOpen(false)}>
               <Button
                 variant="outline"
                 className="w-full justify-center h-11 rounded-xl border-emerald-500/40 text-emerald-600 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/20 font-semibold"
@@ -333,13 +334,13 @@ const Navbar = () => {
                 <School className="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" />
                 {t("nav.teacherLogin")}
               </Button>
-            </Link>
-            <Link to="/login?role=student" onClick={() => setMobileMenuOpen(false)}>
+            </a>
+            <a href={appLink("/login?role=student")} onClick={() => setMobileMenuOpen(false)}>
               <Button className="w-full justify-center h-11 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold shadow-md shadow-blue-600/20">
                 <GraduationCap className="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" />
                 {t("nav.getStarted")}
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       )}

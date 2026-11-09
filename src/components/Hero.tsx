@@ -14,6 +14,7 @@ import {
 import ihelpLogo from "@/assets/ihelp-logo.png";
 import skillupLogo from "@/assets/skillup-logo.png";
 import { useLanguage } from "@/context/LanguageContext";
+import { appLink } from "@/lib/app-link";
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -112,12 +113,12 @@ const Hero = () => {
           </p>
 
           <div className="max-w-md mx-auto mb-8 text-center">
-            <Link to="/login?role=student">
+            <a href={appLink("/login?role=student")}>
               <Button variant="hero" size="lg" className="w-full gap-2 text-base py-6 shadow-glow hover:shadow-[0_0_50px_rgba(37,99,235,0.4)] transition-all hover:scale-105">
                 <Mic className="w-5 h-5 text-accent-foreground animate-pulse" /> {t("hero.practice")}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </Link>
+            </a>
             <p className="text-sm text-primary-foreground/75 mt-3">{t("hero.allowance")}</p>
           </div>
 
@@ -131,7 +132,7 @@ const Hero = () => {
               </Button>
             </a>
 
-            <Link to="/login?role=teacher">
+            <a href={appLink("/login?role=teacher")}>
               <Button
                 variant="outline"
                 size="lg"
@@ -140,7 +141,7 @@ const Hero = () => {
                 <School className="mr-2 h-5 w-5 text-accent" />
                 {t("hero.teacherDashboard")}
               </Button>
-            </Link>
+            </a>
 
             <Button
               variant="outline"
