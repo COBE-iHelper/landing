@@ -73,9 +73,12 @@ export default function LoginPage() {
     email: string | null;
     displayName?: string | null;
     photoURL?: string | null;
+    getIdToken: () => Promise<string>;
   }): Promise<string | undefined> => {
     if (!user.email) return undefined;
+    const idToken = await user.getIdToken();
     const body = JSON.stringify({
+      idToken,
       email: user.email,
       name: user.displayName || user.email.split("@")[0],
       image: user.photoURL || null,
